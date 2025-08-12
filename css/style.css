@@ -1,7 +1,25 @@
 /* Please ❤ this if you like it! */
 
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&family=Pinyon+Script&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Satisfy&family=Yellowtail&family=Kaushan+Script&family=Caveat:wght@400;600&family=Playfair+Display:ital,wght@1,500&family=Lora:ital,wght@1,400;1,600&display=swap');
+
+.slogan-script {              /* elige una y déjala */
+  font-family: "Parisienne", cursive;  /* prueba: Parisienne / Satisfy / Yellowtail / Kaushan Script / Caveat */
+  letter-spacing: .02em;     /* mejora legibilidad */
+  line-height: 1.05;
+}
+
+/* opción serif itálica súper legible */
+.slogan-italic {
+  font-family: "Lora", serif;   /* o "Playfair Display" */
+  font-style: italic;
+  letter-spacing: .02em;
+}
+
+
+
 :root {
   --brand-burguer: white;                    /* Icono hamburguesa */
   --link-color: white;                       /* Color de enlaces en menú */
@@ -14,7 +32,7 @@
   --color-light-white: #ece8e2;              /* Blanco suave */
 }
 body{
-	font-family: 'Montserrat', sans-serif;
+	font-family: "Qwitcher Grypen", cursive;
 	font-weight: 300;
 	font-size: 15px;
 	line-height: 1.7;
@@ -30,6 +48,46 @@ a {
 a:hover {
 	text-decoration: none;
 }
+
+/* Párrafos y texto general */
+body, p, li, a, span {
+  font-family: 'monserrat',  san-serif !important;
+}
+
+/* Títulos y encabezados */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif !important;
+}
+
+h1 {
+  font-size: 4rem !important;
+  margin: 0.5rem 0;
+}
+
+h2 {
+  font-size: rem !important;
+  margin: 0.5rem 0;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+p {
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Contenedor genérico reutilizable */
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:0 auto;
+  padding-inline: clamp(16px,4vw,40px);
+}
+
 
 /* #Cursor
 ================================================== */
@@ -229,7 +287,6 @@ a:hover {
 	text-align: center;
 	color: #fff;
 	overflow: hidden; 
-	font-family: 'Montserrat', sans-serif;
 	font-size: 8vh;
 	font-weight: 900;
 	line-height: 1.15;
@@ -291,7 +348,7 @@ a:hover {
 	width: 100%;
 }
 body.nav-active .nav__content {
-	background: url('fondo-nav.webp') no-repeat center center;
+	background-color: var(--color-light-white) !important;
     background-size: cover;
 	visibility: visible;
 }
@@ -693,3 +750,258 @@ body.nav-active .card-social {
 }
 
 
+/**SECCION SLOGAN**/
+
+/* SECCION SLOGAN */
+.slogan-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 60px 20px;
+	background: var(--color-light-white);
+}
+
+.slogan-container {
+	text-align: center;
+}
+
+.slogan-logo {
+	max-width: 300px;
+	height: auto;
+	margin-bottom: -95px;
+}
+
+.slogan-title {
+	font-family: 'Marcellus', serif;
+	font-size: clamp(1.5rem, 3vw, 2.5rem);
+	color: var(--color-dark-forest);
+	margin-bottom: 20px;
+}
+
+/* BOTÓN */
+button {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	background: transparent;
+	padding: 0;
+	font-size: inherit;
+	font-family: inherit;
+}
+
+button.learn-more {
+	width: 12rem;
+	height: auto;
+}
+
+button.learn-more .circle {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: relative;
+	display: block;
+	margin: 0;
+	width: 3rem;
+	height: 3rem;
+	background: var(--color-dark-forest);
+	border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	left: 0.625rem;
+	width: 1.125rem;
+	height: 0.125rem;
+	background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+	position: absolute;
+	content: "";
+	top: -0.29rem;
+	right: 0.0625rem;
+	width: 0.625rem;
+	height: 0.625rem;
+	border-top: 0.125rem solid #fff;
+	border-right: 0.125rem solid #fff;
+	transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0.75rem 0;
+	margin: 0 0 0 1.85rem;
+	color: var(--color-dark-forest);
+	font-weight: 700;
+	line-height: 1.6;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+button:hover .circle {
+	width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+	background: #fff;
+	transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+	color: #fff;
+}
+
+
+/* ===== Sección Beneficios ===== */
+/* SECCIÓN BENEFICIOS */
+.benefits-section {
+  width: 100vw;
+  min-height: 100vh;
+  margin-left: calc(-1 * (100vw - 100%)/2); /* Para cubrir el borde izquierdo incluso si hay scroll */
+  padding: 40px 0;
+  background: var(--color-light-white); /* solo color beige */
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding-bottom: 10rem;
+}
+
+.benefits-title {
+  text-align: center;
+  color: var(--color-dark-forest);
+  font-family: 'Marcellus', serif;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  top: 20px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px; /* menos espacio entre cartas */
+  max-width: 300px; /* antes 400px */
+  margin: 0 auto;
+}
+
+.benefit-card {
+  padding: 0.5em 0.5em 0.5em 0.5em; /* menos padding */
+  box-shadow: 16px 16px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 1.2em;
+  aspect-ratio: 1 / 1;
+  font-size: 0.95rem; /* texto más pequeño */
+  text-align: center;
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  background: #fff !important;
+  color: var(--color-dark-forest) !important;
+}
+
+/* Elimina o comenta los selectores que alternan color por paridad */
+/*.benefit-card:nth-child(odd),
+.benefit-card:nth-child(even) {
+  /!* background y color ahora se definen en .benefit-card *!/
+}*/
+
+.benefit-card:hover {
+  transform: translateY(-5px) rotateX(4deg) rotateY(4deg);
+  box-shadow: 12px 12px 20px rgba(0,0,0,0.25);
+}
+
+/* Cartas columna izquierda (fondo light white, texto dark forest) */
+.benefit-card:nth-child(odd) {
+  background: var(--color-light-white);
+  color: var(--color-dark-forest);
+}
+
+/* Cartas columna derecha (fondo dark forest, texto light white) */
+.benefit-card:nth-child(even) {
+  background: var(--color-dark-forest);
+  color: var(--color-light-white);
+}
+
+.benefits-section.light .benefits-title {
+  color: var(--color-dark-forest);
+}
+
+/* Fondo izquierdo oscuro → título light white */
+.benefits-section.dark .benefits-title {
+  color: var(--color-light-white);
+}
+
+.benefits-title span {
+  color: var(--color-dark-forest);
+  margin-left: 3rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.benefit-text {
+  font-size: 0.7rem;
+  font-weight: 300;
+  margin-top: 0.3rem;
+  line-height: 1.4;
+  max-width: 90%;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+.benefit-card h3 {
+  margin-top: 0;       /* elimina espacio extra arriba */
+  margin-bottom: 0.5rem;
+  position: absolute;  /* fijamos posición dentro de la carta */
+  top: 0.8rem;         /* lo acercamos al borde superior */
+}
+
+
+.benefit-text {
+  margin-top: auto;   /* empuja hacia abajo desde el título */
+  margin-bottom: auto;/* y hacia arriba desde el fondo */
+}
+
+
+.benefit-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem; /* espacio para el subrayado */
+}
+
+.benefit-title::before,
+.benefit-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0; /* justo debajo del texto */
+  height: 3px; /* grosor del subrayado */
+  border-radius: 2px;
+}
+
+.benefit-title::before {
+  left: 0;
+  width: 100%;
+  background-color: #014421; /* Dark Forest */
+  z-index: 1;
+}
+
+.benefit-title::after {
+  left: 0;
+  width: 50%; /* segundo subrayado más corto */
+  background-color: #f5f5f5; /* Light White */
+  z-index: 2;
+}
