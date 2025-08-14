@@ -5,18 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&family=Pinyon+Script&family=Tangerine:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Satisfy&family=Yellowtail&family=Kaushan+Script&family=Caveat:wght@400;600&family=Playfair+Display:ital,wght@1,500&family=Lora:ital,wght@1,400;1,600&display=swap');
 
-.slogan-script {              /* elige una y déjala */
-  font-family: "Parisienne", cursive;  /* prueba: Parisienne / Satisfy / Yellowtail / Kaushan Script / Caveat */
-  letter-spacing: .02em;     /* mejora legibilidad */
-  line-height: 1.05;
-}
 
-/* opción serif itálica súper legible */
-.slogan-italic {
-  font-family: "Lora", serif;   /* o "Playfair Display" */
-  font-style: italic;
-  letter-spacing: .02em;
-}
+
+
+
 
 .cursor, .cursor2, .cursor3 { display: none !important; }
 
@@ -31,7 +23,11 @@
   --text-light: rgba(255, 255, 255, 0.6);    /* Texto claro */
   --text-lighter: rgba(255, 255, 255, 0.9);  /* Texto más claro */
   --color-dark-forest: #102f15;                /* Verde bosque oscuro */
-  --color-light-white: #ece8e2;              /* Blanco suave */
+	--color-light-white: #ece8e2;
+	--spacing-s: 8px;
+	--spacing-l: 24px;
+	--spacing-xxl: 64px;
+	--width-container: 1200px;              /* Blanco suave */
 }
 body{
 	font-family: "Qwitcher Grypen", cursive;
@@ -58,16 +54,16 @@ body, p, li, a, span {
 
 /* Títulos y encabezados */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lora', serif !important;
+  font-family: 'Great Vibes', serif !important;
 }
 
 h1 {
-  font-size: 4rem !important;
+  font-size: 7rem !important;
   margin: 0.5rem 0;
 }
 
 h2 {
-  font-size: rem !important;
+  font-size: 5rem !important;
   margin: 0.5rem 0;
 }
 
@@ -106,6 +102,7 @@ p {
 	mix-blend-mode: difference;
 	-webkit-transition: all 300ms linear;
 	transition: all 300ms linear;
+	display: none !important;
 }
 .cursor{
 	background-color: #fff;
@@ -773,7 +770,7 @@ body.nav-active .card-social {
     max-width: 550px !important;
     width: 100%;
     height: auto !important;
-    margin-bottom: -100px;
+    margin-bottom: -90px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -782,9 +779,8 @@ body.nav-active .card-social {
 
 .slogan-title {
     font-family: 'Marcellus', serif;
-    font-size: clamp(3.5rem, 8vw, 7rem) !important;
+    font-size: 8rem !important;
     color: var(--color-dark-forest);
-    margin-bottom: ; /* elimina separación debajo del título */
     line-height: 1.05;
     word-break: break-word;
 }
@@ -802,11 +798,79 @@ button {
 	font-family: inherit;
 }
 
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+button {
+  --primary-color: #111;
+  --hovered-color: #c84747;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  font-size: 20px;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+button p {
+  margin: 0;
+  position: relative;
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -7px;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+
+button p::before {
+  position: absolute;
+  content: "Subscribe";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+
+button:hover::after {
+  width: 100%;
+}
+
+button:hover p::before {
+  width: 100%;
+}
+
+button:hover svg {
+  transform: translateX(4px);
+  color: var(--hovered-color);
+}
+
+button svg {
+  color: var(--primary-color);
+  transition: 0.2s;
+  position: relative;
+  width: 15px;
+  transition-delay: 0.2s;
+}
 
 button.learn-more {
 	width: 12rem;
 	height: auto;
-	margin-top: 80px; /* antes 40px, ahora más separación debajo del slogan-title */
+	margin: 80px auto 0; /* Center horizontally */
+	display: block; /* Ensure it's treated as a block element */
 }
 
 button.learn-more .circle {
@@ -877,6 +941,45 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
 	color: #fff;
 }
+
+button.learn-more::after {
+  content: none; /* Remove the underline */
+}
+
+/* === SLOGAN: bajar el bloque en responsive === */
+/* === SLOGAN: subir sección y acercar logo↔slogan === */
+@media (max-width: 480px){
+  .slogan-section{
+    padding-top: 80px;      /* antes mayor: lo subimos */
+    padding-bottom: 64px;
+  }
+  .slogan-logo{
+    max-width: 300px;
+    display: block;
+    margin: 0 auto 10px !important;  /* poco espacio bajo el logo */
+  }
+  .slogan-title{
+    margin-top: 0 !important;        /* sin separación extra arriba */
+    margin-bottom: 0.4rem;           /* opcional: micro separación */
+  }
+  button.learn-more{
+    margin-top: 20px;                /* botón más cerca del slogan */
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px){
+  .slogan-section{
+    padding-top: 90px;               /* también un poco más arriba en tablet */
+    padding-bottom: 72px;
+  }
+  .slogan-logo{
+    max-width: 340px;
+    margin: 0 auto 12px !important;
+  }
+  .slogan-title{ margin-bottom: 0.5rem; }
+  button.learn-more{ margin-top: 22px; }
+}
+
 
 
 /* ===== Sección Beneficios ===== */
@@ -1019,4 +1122,383 @@ button:hover .button-text {
   background-color: #f5f5f5; /* Light White */
   z-index: 2;
 }
+
+
+/* ===== Responsive Benefits (shrink only) ===== */
+@media (max-width: 1024px) {
+  .benefits-title{
+    font-size: clamp(2.4rem, 5.6vw, 3rem);
+    margin-bottom: 96px;
+  }
+  .benefits-grid{
+    max-width: 500px;
+    gap: 22px;
+  }
+  .benefit-card{
+    font-size: 1.05rem;
+    padding: 1rem;
+    padding-top: 1.1rem;
+    box-shadow: 12px 12px 24px rgba(0,0,0,.14);
+  }
+  .benefit-card h3{
+    font-size: 1.6rem;
+    top: .6rem;
+  }
+  .benefit-text{
+    font-size: .95rem;
+  }
+  .benefit-title::before,
+  .benefit-title::after{
+    height: 2.5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-title{
+    font-size: clamp(2rem, 6.5vw, 2.4rem);
+    margin-bottom: 72px;
+  }
+  .benefits-grid{
+    max-width: 420px;
+    gap: 16px;
+  }
+  .benefit-card{
+    font-size: .95rem;
+    padding: .9rem;
+    padding-top: 1rem;
+    box-shadow: 10px 10px 20px rgba(0,0,0,.12);
+  }
+  .benefit-card h3{
+    font-size: 1.45rem;
+    top: .55rem;
+  }
+  .benefit-text{
+    font-size: .9rem;
+  }
+  .benefit-title::before,
+  .benefit-title::after{
+    height: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-title{
+    font-size: clamp(1.8rem, 7vw, 2.1rem);
+    margin-bottom: 56px;
+  }
+  .benefits-grid{
+    max-width: 360px;
+    gap: 12px;
+  }
+  .benefit-card{
+    font-size: .9rem;
+    padding: .8rem;
+    padding-top: .9rem;
+  }
+  .benefit-card h3{
+    font-size: 1.3rem;
+    top: .5rem;
+  }
+  .benefit-text{
+    font-size: .88rem;
+  }
+}
+
+
+/** SECCION SERVICIOS**/
+
+.services{
+	align-items: flex-start;
+
+	display: flex;
+	min-height: 100%;
+	justify-content: center;
+	padding: var(--spacing-xxl, 64px) var(--spacing-l, 24px);
+  }
+  
+  .services .card-grid{
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-column-gap: var(--spacing-l, 24px);
+	grid-row-gap: var(--spacing-l, 24px);
+	max-width: var(--width-container, 1200px);
+	width: 100%;
+  }
+  
+  @media (min-width: 540px){
+	.services .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 960px){
+	.services .card-grid{ grid-template-columns: repeat(4, 1fr); }
+  }
+  
+  .services .card{
+	position: relative;
+	display: block;
+	list-style: none;
+	text-decoration: none;
+	outline: none;
+  }
+  
+  .services .card::before{
+	content: '';
+	display: block;
+	padding-bottom: 150%;
+	width: 100%;
+  }
+  
+  .services .card__background{
+	background-size: cover;
+	background-position: center;
+	border-radius: var(--spacing-l, 24px);
+	bottom: 0;
+	filter: brightness(0.90) saturate(1.6) contrast(0.95);
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform-origin: center;
+	transform: scale(1) translateZ(0);
+	transition: filter 200ms linear, transform 200ms linear;
+  }
+  
+  .services .card:hover .card__background,
+  .services .card:focus .card__background{
+	transform: scale(1.05) translateZ(0);
+  }
+  
+  .services .card-grid:hover > .card:not(:hover) .card__background{
+	filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+  }
+  
+  .services .card__content{
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: var(--spacing-l, 24px);
+	z-index: 3; /* por encima del decor */
+  }
+  
+  .services .card__category{
+	color: var(--text-light, rgba(255,255,255,.65));
+	font-size: 0.9rem;
+	margin-bottom: var(--spacing-s, 8px);
+	text-transform: uppercase;
+  }
+  
+  .services .card__heading{
+	color: var(--color-dark-forest);
+	font-size: 1.9rem;
+	line-height: 1.4;
+	text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
+	word-spacing: 100vw; /* ayuda a cortar en varias líneas */
+  }
+  
+  /* SVG decor fino arriba a la derecha */
+  .services .card__decor{
+	position: absolute;
+	top: calc(var(--spacing-l, 24px) - 4px);
+	right: calc(var(--spacing-l, 24px) - 4px);
+	width: 56px;
+	height: 56px;
+	z-index: 2;
+	pointer-events: none;
+	stroke: var(--card-decor-color, rgba(255,255,255,.85));
+	stroke-width: 1;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
+	opacity: .95;
+	filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
+  }
+  
+  /* Accesibilidad / reduce motion */
+  @media (prefers-reduced-motion: reduce){
+	.services .card__background{ transition: none; transform: none; }
+  }
+
+  /* Columnas de ancho fijo, el conjunto queda centrado */
+.services .card-grid{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
+	gap: var(--spacing-l, 24px);
+	margin: 0 auto;
+	justify-content: center;    /* centra los tracks dentro del contenedor */
+	width: min(100%, var(--width-container, 1200px));
+}
+
+
+/* El link ocupa toda la carta */
+.services .card{ position: relative; }
+.services .card::before{ content:''; display:block; padding-bottom:150%; }
+.services .card__link{ position:absolute; inset:0; display:block; }
+
+/* Remove styles for .card__btn */
+
+.card-button {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white; /* Default color */
+}
+
+.card-button p {
+  margin: 0;
+  color: white; /* Default text color */
+  transition: color 0.2s ease;
+}
+
+.card-button svg {
+  color: white; /* Default icon color */
+  transition: transform 0.2s, color 0.2s;
+}
+
+.card-button:hover svg,
+.card-button:hover p {
+  color: var(--color-dark-forest); /* Change to dark forest on hover */
+}
+
+.card-button::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-dark-forest); /* Underline color */
+  transition: width 0.3s ease-out;
+}
+
+.card-button:hover::after {
+  width: 100%;
+}
+
+
+/* ===== Botón minimalista "corazón / Ver más" (scope: #services) ===== */
+.services .heart-btn{
+	all: unset;
+	box-sizing: border-box;
+  
+	position: absolute;
+	bottom: var(--spacing-l, 24px);
+	right: var(--spacing-l, 24px);
+	z-index: 5;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	border-radius: 50%;
+	cursor: pointer;
+	border: 2px solid var(--color-dark-forest); /* Green border */
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
+	transition: width 0.3s, background-color 0.3s, border-radius 0.3s, transform 0.2s;
+	overflow: hidden;
+  }
+  
+  .services .heart-btn .heartIcon{
+	width: 14px;
+	height: 14px;
+	color: var(--color-dark-forest); /* Green heart */
+	transition: transform 0.3s, width 0.3s, color 0.3s;
+  }
+  
+  .services .heart-btn::before{
+	content: "Ver más";
+	position: absolute;
+	top: -20px;
+	color: var(--color-dark-forest); /* Green text */
+	font-size: 2px;
+	letter-spacing: 0.2px;
+	transition: transform 0.3s, font-size 0.3s, opacity 0.3s;
+	opacity: 0;
+  }
+  
+  .services .heart-btn:hover{
+	width: 140px;
+	border-radius: 50px;
+	background-color: var(--color-dark-forest); /* Dark forest background on hover */
+  }
+  .services .heart-btn:hover .heartIcon{
+	width: 0; /* Make the heart icon disappear */
+	opacity: 0; /* Ensure it's invisible */
+	transition: opacity 0.3s, width 0.3s;
+  }
+  .services .heart-btn:hover::before{
+	font-size: 16px; /* Slightly larger text */
+	opacity: 1;
+	transform: translateY(30px);
+	color: white; /* White text on hover */
+  }
+  
+  .services .card__link{ z-index: 1; }
+  
+  .services .heart-btn:hover{ transform: translateY(-1px); }
+  
+  .services .heart-btn:focus-visible{
+	outline: 2px solid rgba(255, 255, 255, 0.9);
+	outline-offset: 2px;
+  }
+
+.services .card:hover .heart-btn {
+  width: 140px;
+  border-radius: 50px;
+  background-color: var(--color-dark-forest); /* Dark forest background */
+  transform: translateY(-1px); /* Slight elevation */
+}
+
+.services .card:hover .heart-btn .heartIcon {
+  width: 0; /* Make the heart icon disappear */
+  opacity: 0; /* Ensure it's invisible */
+  transition: opacity 0.3s, width 0.3s;
+}
+
+.services .card:hover .heart-btn::before {
+  font-size: 16px; /* Slightly larger text */
+  opacity: 1;
+  transform: translateY(30px);
+  color: white; /* White text */
+}
+
+/* Botón siempre activo en móviles/touch */
+@media (hover: none), (pointer: coarse) {
+	.services .heart-btn{
+	  width: 140px;                          /* estado expandido */
+	  border-radius: 50px;
+	  transform: none;                        /* sin empujones raros */
+	}
+	.services .heart-btn .heartIcon{
+		display: none !important;
+	  }
+	.services .heart-btn::before{
+		color: var(--color-dark-forest);
+	  content: "Ver más";
+	  text-align: center;
+	  justify-content: center;
+	  font-size: 1.2rem;
+	  opacity: 1;
+	  transform: translateY(30px);
+	}
+  
+	/* Por si alguna regla de hover de la tarjeta intentara activarlo,
+	   mantenemos el estado fijo igual. */
+	.services .card:hover .heart-btn,
+	.services .card:focus .heart-btn{
+	  width: 140px;
+	  border-radius: 50px;
+	  transform: none;
+	  text-align: center;
+	  justify-content: center;
+	}
+  }
 
