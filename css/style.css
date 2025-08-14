@@ -1342,7 +1342,7 @@ button.learn-more::after {
   transform: translateX(-50%);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   font-weight: 600;
   font-size: 20px;
   background: none;
@@ -1502,3 +1502,27 @@ button.learn-more::after {
 	}
   }
 
+
+.services__title{
+	color: var(--color-dark-forest);
+	font-size: 2rem;
+	margin-bottom: var(--spacing-l, 24px);
+	text-align: center;
+}
+
+/* Orden en Services: título arriba, luego sub-sección, luego cards */
+.services{
+  display: flex;
+  flex-direction: column;         /* apila hijos en columna */
+  align-items: center;
+}
+
+.services .services__title{
+  order: 0;                       /* 1º */
+  width: min(100%, var(--width-container, 1200px));
+  margin: 0 auto var(--spacing-xxl, 64px);
+  text-align: center;
+}
+
+.services .services__sub{ order: 1; }   /* 2º (si la tenés) */
+.services .card-grid{ order: 2; }       /* 3º: las cartas */
