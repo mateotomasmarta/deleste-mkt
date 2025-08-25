@@ -1,1528 +1,227 @@
-/* Please ❤ this if you like it! */
 
+/* ==========================
+   IMPORTAR TIPOGRAFÍAS
+   ========================== */
+@import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&family=Pinyon+Script&family=Tangerine:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Parisienne&family=Satisfy&family=Yellowtail&family=Kaushan+Script&family=Caveat:wght@400;600&family=Playfair+Display:ital,wght@1,500&family=Lora:ital,wght@1,400;1,600&display=swap');
+@font-face {
+  font-family: 'Signature Monoline';
+  src: url('../assets/fonts/SignatureMonolineScriptRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
-
-
-
-
-
-.cursor, .cursor2, .cursor3 { display: none !important; }
-
-
-
+/* ==========================
+   VARIABLES GLOBALES
+   ========================== */
 :root {
-  --brand-burguer: white;                    /* Icono hamburguesa */
-  --link-color: white;                       /* Color de enlaces en menú */
-  --background: #001f3f;                     /* Fondo del círculo inicial */
-  --main-color: white;                       /* Texto del botón "menú" */
-  --background-dark: #2d3548;                /* Gris azulado oscuro */
-  --text-light: rgba(255, 255, 255, 0.6);    /* Texto claro */
-  --text-lighter: rgba(255, 255, 255, 0.9);  /* Texto más claro */
-  --color-dark-forest: #102f15;                /* Verde bosque oscuro */
-	--color-light-white: #ece8e2;
-	--spacing-s: 8px;
-	--spacing-l: 24px;
-	--spacing-xxl: 64px;
-	--width-container: 1200px;              /* Blanco suave */
-}
-body{
-	font-family: "Qwitcher Grypen", cursive;
-	font-weight: 300;
-	font-size: 15px;
-	line-height: 1.7;
-	color: #c4c3ca;
-	background-color: var(--color-light-white);
-	overflow-x: hidden;
-	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear;
-}
-a {
-	cursor: pointer;
-}
-a:hover {
-	text-decoration: none;
+    --color-bg: #ece9e2;
+    --color-dark: #000000;
+    --color-accent: #112f15;
+
+    --font-primary: 'Gowun Batang', serif;
+    --font-script: 'Signature Monoline', cursive;
 }
 
-/* Párrafos y texto general */
-body, p, li, a, span {
-  font-family: 'monserrat',  san-serif !important;
+/* ==========================
+   ESTILOS BASE
+   ========================== */
+html {
+    font-size: 62.5%; /* 1rem = 10px */
+    scroll-behavior: smooth;
 }
 
-/* Títulos y encabezados */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-dark);
+    font-family: var(--font-primary);
+    font-size: 1.6rem;   /* 16px */
+    line-height: 1.6;
+}
+
+/* ==========================
+   TITULOS Y TEXTOS
+   ========================== */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Great Vibes', serif !important;
+    font-family: var(--font-primary);
+    color: var(--color-accent);
+    margin: 0 0 2rem 0;
 }
 
-h1 {
-  font-size: 7rem !important;
-  margin: 0.5rem 0;
-}
-
-h2 {
-  font-size: 5rem !important;
-  margin: 0.5rem 0;
-}
-
-h1, h2, h3 {
-  font-weight: 500;
-  line-height: 1.2;
-}
+h1 { font-size: 3.2rem; } /* 32px */
+h2 { font-size: 2.4rem; } /* 24px */
+h3 { font-size: 2rem; }   /* 20px */
 
 p {
-  font-weight: 400;
-  line-height: 1.6;
-  font-size: 1rem;
+    margin: 0 0 1.6rem 0;
+    font-size: 1.6rem; /* 16px */
 }
 
-/* Contenedor genérico reutilizable */
+.signature {
+    font-family: var(--font-script);
+    font-size: 2.4rem; /* 24px */
+    color: var(--color-accent);
+}
+
+/* ==========================
+   BOTONES
+   ========================== */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    font-family: var(--font-primary);
+    font-weight: bold;
+    font-size: 1.6rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn--primary {
+    color: #fff;
+}
+
+
+
+
+/* Contenedor centrado y ancho cómodo */
 .container{
-  width:100%;
-  max-width:1200px;
-  margin:0 auto;
-  padding-inline: clamp(16px,4vw,40px);
-}
-
-
-/* #Cursor
-================================================== */
-
-.cursor,
-.cursor2,
-.cursor3{
-	position: fixed;
-	border-radius: 50%;	
-	transform: translateX(-50%) translateY(-50%);
-	pointer-events: none;
-	left: -100px;
-	top: 50%;
-	mix-blend-mode: difference;
-	-webkit-transition: all 300ms linear;
-	transition: all 300ms linear;
-	display: none !important;
-}
-.cursor{
-	background-color: #fff;
-	height: 0;
-	width: 0;
-	z-index: 99999;
-}
-.cursor2,.cursor3{
-	height: 36px;
-	width: 36px;
-	z-index:99998;
-	-webkit-transition:all 0.3s ease-out;
-	transition:all 0.3s ease-out
-}
-.cursor2.hover,
-.cursor3.hover{
-	-webkit-transform:scale(2) translateX(-25%) translateY(-25%);
-	transform:scale(2) translateX(-25%) translateY(-25%);
-	border:none
-}
-.cursor2{
-	border: 2px solid #fff;
-	box-shadow: 0 0 22px rgba(255, 255, 255, 0.6);
-}
-.cursor2.hover{
-	background: rgba(255,255,255,1);
-	box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
-}
-
-@media screen and (max-width: 1200px){
-	.cursor,.cursor2,.cursor3{
-		display: none
-	}
-}
-
-/* #Primary style
-================================================== */
-
-.section {
-    position: relative;
-	width: 100%;
-	display: block;
-}
-.over-hide{
-	overflow: hidden;
-}
-.full-height {
-	height: 100vh;
-}
-
-/* #Navigation
-================================================== */
- 
-.cd-header{
-    position: fixed;
-	width:100%;
-	top:0;
-	left:0;
-	z-index:100;
-} 
-.header-wrapper{
-    position: relative;
-	width: calc(100% - 100px);
-	margin-left: 50px;
-} 
-.logo-wrap {
-    position: absolute;
-    top: -7rem;      /* antes -3rem, ahora más arriba */
-    left: -8rem;
+    max-width: 120rem;     /* 1200px */
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  /* Barra superior */
+  .topbar{
+    background: var(--color-bg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  
+  /* Nav en 3 columnas con logo centrado */
+  .nav{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    min-height: 6.4rem;      /* antes 9.6rem → más compacto */
+    padding: 2rem 0;       /* menos padding arriba/abajo */
+    gap: 2rem;
+  }
+  
+  /* Listas izquierda y derecha centradas dentro de su columna */
+  .nav__list{
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6.4rem;                           /* separación como la referencia */
+    margin: 0;
     padding: 0;
-    cursor: pointer;
-}
-
-.nav-but-wrap{ 
-	position: relative;
-	display: inline-block;
-	float: right;
-	padding-left: 15px;
-	padding-top: 15px;
-	margin-top: 26px;
-	transition : all 0.3s ease-out;
-}
-.menu-icon {
-	height: 40px;    /* antes 60px */
-	width: 40px;     /* antes 60px */
-	position: relative;
-	z-index: 2;
-	cursor: pointer;
-	display: block;
-}
-.menu-icon__line {
-	height: 3px;     /* antes 5px */
-	width: 40px;     /* antes 60px */
-	display: block;
-	background-color: var(--color-dark-forest);
-	margin-bottom: 9px; /* antes 14px */
-	cursor: pointer;
-	-webkit-transition: background-color .5s ease, -webkit-transform .2s ease;
-	transition: background-color .5s ease, -webkit-transform .2s ease;
-	transition: transform .2s ease, background-color .5s ease;
-	transition: transform .2s ease, background-color .5s ease, -webkit-transform .2s ease;
-}
-.menu-icon__line-left {
-	width: 22px;     /* antes 33px */
-	-webkit-transition: all 200ms linear;
-	transition: all 200ms linear;
-}
-.menu-icon__line-right {
-	width: 22px;     /* antes 33px */
-	float: right;
-	-webkit-transition: all 200ms linear;
-	-moz-transition: all 200ms linear;
-	-o-transition: all 200ms linear;
-	-ms-transition: all 200ms linear;
-	transition: all 200ms linear;
-}
-.menu-icon:hover .menu-icon__line-left,
-.menu-icon:hover .menu-icon__line-right {
-	width: 40px; /* antes 60px */
-}
-.nav {
-	position: fixed;
-	z-index: 98;
-}
-.nav:before, .nav:after {
-	content: "";
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	background: rgba(20, 21, 26,0.6);
-	border-bottom-left-radius: 200%;
-	z-index: -1;
-	-webkit-transition: -webkit-transform cubic-bezier(0.77, 0, 0.175, 1) 0.6s, border-radius linear 0.8s;
-	transition: -webkit-transform cubic-bezier(0.77, 0, 0.175, 1) 0.6s, border-radius linear 0.8s;
-	transition: transform cubic-bezier(0.77, 0, 0.175, 1) 0.6s, border-radius linear 0.8s;
-	transition: transform cubic-bezier(0.77, 0, 0.175, 1) 0.6s, -webkit-transform cubic-bezier(0.77, 0, 0.175, 1) 0.6s, border-radius linear 0.8s;
-	-webkit-transform: translateX(100%) translateY(-100%);
-          transform: translateX(100%) translateY(-100%);
-}
-.nav:after {
-	background: rgba(9,9,12,1);
-	-webkit-transition-delay: 0s;
-          transition-delay: 0s;
-}
-.nav:before {
-	-webkit-transition-delay: .2s;
-          transition-delay: .2s;
-}
-.nav__content {
-	position: fixed;
-	visibility: hidden;
-	top: 50%;
-	margin-top: 20px;
-	-webkit-transform: translate(0%, -50%);
-          transform: translate(0%, -50%);
-	width: 100%;
-	text-align: center;
-}
-
-.nav__content {
-    display: flex;
-    flex-direction: column;
+  }
+  
+  /* Enlaces menú */
+  .nav a{
+    font-family: var(--font-primary);      /* Gowun Batang */
+    font-size: 1.8rem;
+    color: var(--color-dark);
+    text-decoration: none;
+    letter-spacing: .02em;
+  }
+  .nav a:hover{ color: var(--color-accent); }
+  
+  /* Logo grande y centrado */
+  .brand{
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-start; /* empezamos desde arriba */
+    justify-content: center;
+  }
+  .brand__img{
+    height: 4.4rem;          /* antes 5.6rem → baja el bloque */
+    width: auto;
+  }
+  
+  /* Botón de contacto tipo píldora */
+  .btn{
+    display: inline-block;
+    padding: 1rem 2.2rem;
+    border-radius: 999rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: filter .2s ease;
+  }
+  .btn--primary{
+    text-transform: uppercase;      /* #112f15 */
+    color:#fff;
+  }
+  .btn--primary:hover{ filter: brightness(.92); }
+  
+  /* Responsive: mantiene el logo centrado y reduce espacios */
+  @media (max-width: 900px){
+    .nav__list{ gap: 3.2rem; }
+    .brand__img{ height: 4.6rem; }
+  }
+  
+  @media (max-width: 640px){
+    .nav{
+      grid-template-columns: 1fr;          /* pila en mobile */
+      gap: 1.2rem;
+      padding: 1.2rem 0;
+    }
+    .brand{ order: -1; }                   /* logo arriba */
+    .nav__list{ flex-wrap: wrap; gap: 2rem; }
+  }
+
+/* Alto lógico del header (no cambia) */
+.nav{
+    min-height: 6.4rem;          /* o el valor que venías usando */
+    align-items: center;
+    overflow: visible;            /* por si el logo escala por fuera */
+  }
+  
+  /* Alto lógico del espacio del logo */
+  .brand{
+    height: 3.8rem;               /* el header no crecerá más que esto */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Agrandamos el logo sin modificar el flujo */
+  .brand__img{
     height: 100%;
-    padding-top: 100px; /* más espacio arriba */
-}
-
-
-.nav__list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.nav__list-item {
-	position: relative;
-	display: block;
-	-webkit-transition-delay: 0.8s;
-          transition-delay: 0.8s;
-	opacity: 0;
-	text-align: center;
-	color: #fff;
-	overflow: hidden; 
-	font-size: 11vh; /* antes 8vh */
-	font-weight: 900;
-	line-height: 1.15;
-	letter-spacing: 3px;
-	-webkit-transform: translate(100px, 0%);
-          transform: translate(100px, 0%);
-	-webkit-transition: opacity .2s ease, -webkit-transform .3s ease;
-	transition: opacity .2s ease, -webkit-transform .3s ease;
-	transition: opacity .2s ease, transform .3s ease;
-	transition: opacity .2s ease, transform .3s ease, -webkit-transform .3s ease;
-	margin-top: 0;
-	margin-bottom: 0;
-}
-.nav__list-item a{ 
-	position: relative;
-	text-decoration: none;
-	color: rgba(255,255,255,0.6);
-	overflow: hidden; 
-	cursor: pointer;
-	padding-left: 5px;
-	padding-right: 5px;
-	font-weight: 900;
-	z-index: 2;
-	display: inline-block;
-	text-transform: uppercase;
-	font-size: 2.2rem; /* nuevo, aumenta el tamaño del texto del link */
-    -webkit-transition: all 200ms linear;
-    transition: all 200ms linear; 
-}
-.nav__list-item a:after{ 
-	position: absolute;
-	content: '';
-	top: 50%;
-	margin-top: -2px;
-	left: 50%;
-	width: 0;
-	height: 0;
-	opacity: 0;
-	background-color: var(--color-light-white);
-	z-index: 1;
-    -webkit-transition: all 200ms linear;
-    transition: all 200ms linear; 
-}
-.nav__list-item a:hover:after{ 
-	height: 4px;
-	opacity: 1;
-	left: 0;
-	width: 100%;
-}
-.nav__list-item a:hover{
-	color: rgba(255,255,255,1);
-}
-.nav__list-item.active-nav a{
-	color: rgba(255,255,255,1);
-}
-.nav__list-item.active-nav a:after{ 
-	height: 4px;
-	opacity: 1;
-	left: 0;
-	width: 100%;
-}
-body.nav-active .nav__content {
-	background-color: var(--color-light-white) !important;
-    background-size: cover;
-	visibility: visible;
-}
-body.nav-active .menu-icon__line {
-	background-color: var(--color-dark-forest);
-	-webkit-transform: translate(0px, 0px) rotate(-45deg);
-          transform: translate(0px, 0px) rotate(-45deg);
-}
-body.nav-active .menu-icon__line-left {
-	width: 18px; /* antes 30px */
-	-webkit-transform: translate(2px, 4px) rotate(45deg); /* mitad de antes */
-          transform: translate(2px, 4px) rotate(45deg);
-}
-body.nav-active .menu-icon__line-right {
-	width: 18px; /* antes 30px */
-	float: right;
-	-webkit-transform: translate(-3px, -3.5px) rotate(45deg); /* mitad de antes */
-          transform: translate(-3px, -3.5px) rotate(45deg);
-}
-body.nav-active .menu-icon:hover .menu-icon__line-left,
-body.nav-active .menu-icon:hover .menu-icon__line-right {
-	width: 18px; /* antes 30px */
-}
-body.nav-active .nav {
-	visibility: visible;
-}
-body.nav-active .nav:before, body.nav-active .nav:after {
-	-webkit-transform: translateX(0%) translateY(0%);
-          transform: translateX(0%) translateY(0%);
-	border-radius: 0;
-}
-body.nav-active .nav:after {
-	-webkit-transition-delay: .1s;
-          transition-delay: .1s;
-}
-body.nav-active .nav:before {
-	-webkit-transition-delay: 0s;
-          transition-delay: 0s;
-}
-body.nav-active .nav__list-item {
-	opacity: 1;
-	-webkit-transform: translateX(0%);
-          transform: translateX(0%);
-	-webkit-transition: opacity .3s ease, color .3s ease, -webkit-transform .3s ease;
-	transition: opacity .3s ease, color .3s ease, -webkit-transform .3s ease;
-	transition: opacity .3s ease, transform .3s ease, color .3s ease;
-	transition: opacity .3s ease, transform .3s ease, color .3s ease, -webkit-transform .3s ease;
-}
-body.nav-active .nav__list-item:nth-child(0) {
-	-webkit-transition-delay: 0.7s;
-          transition-delay: 0.7s;
-}
-body.nav-active .nav__list-item:nth-child(1) {
-	-webkit-transition-delay: 0.8s;
-          transition-delay: 0.8s;
-}
-body.nav-active .nav__list-item:nth-child(2) {
-	-webkit-transition-delay: 0.9s;
-          transition-delay: 0.9s;
-}
-body.nav-active .nav__list-item:nth-child(3) {
-	-webkit-transition-delay: 1s;
-          transition-delay: 1s;
-}
-body.nav-active .nav__list-item:nth-child(4) {
-	-webkit-transition-delay: 1.1s;
-          transition-delay: 1.1s;
-}
-body.nav-active .nav__list-item:nth-child(5) {
-	-webkit-transition-delay: 1.2s;
-          transition-delay: 1.2s;
-}
-body.nav-active .nav__list-item:nth-child(6) {
-	-webkit-transition-delay: 1.3s;
-          transition-delay: 1.3s;
-}
-body.nav-active .nav__list-item:nth-child(7) {
-	-webkit-transition-delay: 1.4s;
-          transition-delay: 1.4s;
-}
-body.nav-active .nav__list-item:nth-child(8) {
-	-webkit-transition-delay: 1.5s;
-          transition-delay: 1.5s;
-}
-body.nav-active .nav__list-item:nth-child(9) {
-	-webkit-transition-delay: 1.6s;
-          transition-delay: 1.6s;
-}
-body.nav-active .nav__list-item:nth-child(10) {
-	-webkit-transition-delay: 1.7s;
-          transition-delay: 1.7s;
-}
-
-/* Fondo blanco cuando el menú hamburguesa está activo */
-body.nav-active .nav:before,
-body.nav-active .nav:after {
-    background: var(--color-light-white);
-}
-
-/* También el área de contenido del menú, por si tu overlay es semitransparente */
-body.nav-active .nav__content {
-    background: url('fondo-nav.webp') no-repeat center center;
-    background-size: cover;
-
-}
-body.nav-active .nav:before,
-body.nav-active .nav:after {
-    background: url('fondo-nav.jpg') no-repeat center center;
-    background-size: cover;
-}
-
-/* Texto del menú en color oscuro cuando está activo */
-body.nav-active .nav__list-item a {
-    color: var(--color-dark-forest);
-}
-
-body.nav-active .nav__list-item a:hover {
-    color: var(--color-dark-forest);
-}
-
-/* Fondo del overlay siempre blanco */
-.nav:before,
-.nav:after {
-    background: var(--color-light-white) !important;
-}
-
-/* Menú activo: aseguramos el color blanco en la animación */
-body.nav-active .nav:before,
-body.nav-active .nav:after {
-    background: var(--color-light-white) !important;
-}
-
-/* Ajuste de color de texto para que contraste siempre */
-.nav__list-item a {
-    color: var(--color-dark-forest) !important;
-}
-
-.nav__list-item a:hover {
-    color: var(--color-dark-forest) !important;
-}
-
-/**IMAGEN DEL MENU DE NAVEGACION**/
-.logo-img {
-    height: 420px;   /* aumentado desde 220px */
     width: auto;
     display: block;
-    top: auto !important; /* eliminamos desplazamiento forzado */
-}
-
-
-/* Social menu*/
-.card-social {
-	position: static;
-	width: fit-content;
-	height: fit-content;
-	background-color: transparent;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 2rem; /* separa más del último link */
-	padding: 25px 25px;
-	gap: 20px;
-	position: fixed;
-	left: 50%;
-	bottom: 60px;
-	transform: translateX(-50%);
-	z-index: 200;
-	transition:
-		opacity .6s cubic-bezier(0.77, 0, 0.175, 1),
-		transform .6s cubic-bezier(0.77, 0, 0.175, 1),
-		visibility 0s linear .6s; /* oculta al final de la animación */
-}
-
-/* for all social containers*/
-.socialContainer {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: rgb(44, 44, 44);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition-duration: 1s;
-}
-/* instagram*/
-.containerOne:hover {
-  background-color: #d62976;
-  transition-duration: 0.3s;
-}
-/* twitter*/
-.containerTwo:hover {
-  background-color: red;
-  transition-duration: 0.3s;
-}
-/* linkdin*/
-.containerThree:hover {
-  background-color: #0072b1;
-  transition-duration: 0.3s;
-}
-/* Whatsapp*/
-.containerFour:hover {
-  background-color: #128c7e;
-  transition-duration: 0.3s;
-}
-
-.socialContainer:active {
-  transform: scale(0.9);
-  transition-duration: 0.3s;
-}
-
-.socialSvg {
-  width: 17px;
-}
-
-.socialSvg path {
-  fill: rgb(255, 255, 255);
-}
-
-.socialContainer:hover .socialSvg {
-  animation: slide-in-top 0.3s both;
-}
-
-@keyframes slide-in-top {
-  0% {
-    transform: translateY(-50px);
-    opacity: 0;
+    transform: scale(11);       /* ⬅️ ajustá este factor hasta que te guste */
+    transform-origin: center;
+  }
+  
+  /* Por si el texto queda un pelín descentrado verticalmente */
+  .nav a{ line-height: 1; }
+  
+  /* Responsivo: reducimos la escala para que no invada el menú en mobile */
+  @media (max-width: 900px){
+    .brand{ height: 3.4rem; }
+    .brand__img{ transform: scale(1.35); }
+  }
+  @media (max-width: 640px){
+    .brand{ height: 3.2rem; }
+    .brand__img{ transform: scale(1.15); }
   }
 
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+
+  /* ======= HERO ======= */
+  .hero {
+    height: 92vh; /* o el alto que elijas */
+    overflow: hidden;
   }
-}
-
-.card-social {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(100px); /* igual que items del menú */
-  transition:
-    opacity .3s ease,
-    transform .3s ease,
-    visibility 0s linear .3s;
-}
-
-body.nav-active .card-social {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(0);
-  transition:
-    opacity .3s ease 1.2s,  /* delay del último item */
-    transform .3s ease 1.2s,
-    visibility 0s linear 1.2s;
-}
-
-/* Centrar las social cards bajo el menú (no al viewport) */
-.nav__content{
-  display:flex;
-  flex-direction:column;
-  align-items:center;   /* centra la columna del menú */
-}
-
-/* Override fuerte a la versión 'fixed' anterior */
-.card-social{
-  position: static !important;
-  left: auto !important;
-  right: auto !important;
-  bottom: auto !important;
-  transform: none !important;
-
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 720px;      /* opcional: limita ancho como la columna */
-  margin: 2rem auto 0;   /* centrado bajo "Contacto" */
-}
-
-/* Ajuste de tamaño de menú en móviles */
-
-@media (max-width: 768px) {
-	.nav__content {
-		display: flex;
-		flex-direction: column;
-		justify-content: center; /* Centra verticalmente todo */
-		align-items: center;     /* Centra horizontalmente */
-		height: 100vh;           /* Ocupa toda la altura de la pantalla */
-		padding-top: 0;          /* Elimina el espacio superior */
-		box-sizing: border-box;
-	}
-
-	.nav__list {
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-		align-items: center;
-		margin: 0;
-		padding: 0;
-	}
-
-	.nav__list-item {
-		font-size: 7vh; /* antes 4.6vh */
-		letter-spacing: 1px;
-		line-height: 1.15;
-		text-align: center;
-	}
-
-	.nav__list-item a {
-		padding: 0 4px;
-		font-size: 1.5rem; /* nuevo, aumenta en móvil */
-	}
-
-	/* Social cards al final pero centradas */
-	/* Centrado general */
-	.card-social {
-		position: absolute;
-		bottom: 40px;
-		left: 45%; /* antes estaba en 50%, lo movemos un poco a la izquierda */
-		transform: translateX(-50%);
-		display: flex;
-		justify-content: center;
-		gap: 12px;
-	}
-
-	.socialContainer {
-		width: 38px;
-		height: 38px;
-	}
-
-	/* Ícono SVG más chico */
-	.socialSvg {
-		width: 18px;
-		height: 18px;
-	}
-}
-
-@media (max-width: 480px) {
-	.nav__list-item {
-		font-size: 5.5vh; /* antes 3.8vh */
-		letter-spacing: 0.5px;
-		line-height: 1.12;
-	}
-
-	.card-social {
-		gap: 10px; /* menos separación en pantallas muy pequeñas */
-		margin-top: 20px;
-	}
-
-	.socialContainer {
-		width: 34px; /* aún más chico en móviles chicos */
-		height: 34px;
-	}
-
-	.socialSvg {
-		width: 16px;
-		height: 16px;
-	}
-	.logo-img {
-		height: 72px;
-	}
-}
-
-@media (max-width: 768px) {
-	.card-social {
-		position: absolute;
-		bottom: 20px;             /* distancia desde el borde inferior */
-		left: 45%;                /* en vez de 50% para que quede más a la izquierda */
-		transform: translateX(-50%);
-		display: flex;
-		justify-content: center;
-		gap: 12px;
-	}
-
-	.socialContainer {
-		width: 38px;
-		height: 38px;
-	}
-	}
-
-@media (max-width: 768px) {
-	.nav .card-social {
-		position: absolute !important;
-		bottom: 20px !important;
-		left: 55% !important;
-		/* mover un poco a la izquierda desde el centro */
-		transform: translateX(-56%) !important;  /* prueba -54% / -58% según gusto */
-		display: flex;
-		justify-content: center;
-		gap: 12px;
-	}
-}
-/* Ajuste de posición en escritorio */
-@media (min-width: 769px) {
-	.nav .card-social {
-		position: fixed !important;
-		bottom: 60px !important;
-		left: 52% !important; /* antes estaba en 50%, lo corremos un poco a la derecha */
-		transform: translateX(-50%) !important;
-	}
-}
-
-
-/**SECCION SLOGAN**/
-
-/* SECCION SLOGAN */
-.slogan-section {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 60px 20px;
-	background: var(--color-light-white);
-}
-
-.slogan-container {
-	text-align: center;
-}
-
-.slogan-logo {
-    max-width: 550px !important;
+  
+  .hero__img {
     width: 100%;
-    height: auto !important;
-    margin-bottom: -90px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: -100px;
-}
-
-.slogan-title {
-    font-family: 'Marcellus', serif;
-    font-size: 8rem !important;
-    color: var(--color-dark-forest);
-    line-height: 1.05;
-    word-break: break-word;
-}
-
-/* BOTÓN */
-button {
-	position: relative;
-	display: inline-block;
-	cursor: pointer;
-	outline: none;
-	border: 0;
-	background: transparent;
-	padding: 0;
-	font-size: inherit;
-	font-family: inherit;
-}
-
-button {
-  padding: 0;
-  margin: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-button {
-  --primary-color: #111;
-  --hovered-color: #c84747;
-  position: relative;
-  display: flex;
-  font-weight: 600;
-  font-size: 20px;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-button p {
-  margin: 0;
-  position: relative;
-  font-size: 20px;
-  color: var(--primary-color);
-}
-
-button::after {
-  position: absolute;
-  content: "";
-  width: 0;
-  left: 0;
-  bottom: -7px;
-  background: var(--hovered-color);
-  height: 2px;
-  transition: 0.3s ease-out;
-}
-
-button p::before {
-  position: absolute;
-  content: "Subscribe";
-  width: 0%;
-  inset: 0;
-  color: var(--hovered-color);
-  overflow: hidden;
-  transition: 0.3s ease-out;
-}
-
-button:hover::after {
-  width: 100%;
-}
-
-button:hover p::before {
-  width: 100%;
-}
-
-button:hover svg {
-  transform: translateX(4px);
-  color: var(--hovered-color);
-}
-
-button svg {
-  color: var(--primary-color);
-  transition: 0.2s;
-  position: relative;
-  width: 15px;
-  transition-delay: 0.2s;
-}
-
-button.learn-more {
-	width: 12rem;
-	height: auto;
-	margin: 80px auto 0; /* Center horizontally */
-	display: block; /* Ensure it's treated as a block element */
-}
-
-button.learn-more .circle {
-	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-	position: relative;
-	display: block;
-	margin: 0;
-	width: 3rem;
-	height: 3rem;
-	background: var(--color-dark-forest);
-	border-radius: 1.625rem;
-}
-
-button.learn-more .circle .icon {
-	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	background: #fff;
-}
-
-button.learn-more .circle .icon.arrow {
-	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-	left: 0.625rem;
-	width: 1.125rem;
-	height: 0.125rem;
-	background: none;
-}
-
-button.learn-more .circle .icon.arrow::before {
-	position: absolute;
-	content: "";
-	top: -0.29rem;
-	right: 0.0625rem;
-	width: 0.625rem;
-	height: 0.625rem;
-	border-top: 0.125rem solid #fff;
-	border-right: 0.125rem solid #fff;
-	transform: rotate(45deg);
-}
-
-button.learn-more .button-text {
-	transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	padding: 0.75rem 0;
-	margin: 0 0 0 1.85rem;
-	color: var(--color-dark-forest);
-	font-weight: 700;
-	line-height: 1.6;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-button:hover .circle {
-	width: 100%;
-}
-
-button:hover .circle .icon.arrow {
-	background: #fff;
-	transform: translate(1rem, 0);
-}
-
-button:hover .button-text {
-	color: #fff;
-}
-
-button.learn-more::after {
-  content: none; /* Remove the underline */
-}
-
-/* === SLOGAN: bajar el bloque en responsive === */
-/* === SLOGAN: subir sección y acercar logo↔slogan === */
-@media (max-width: 480px){
-  .slogan-section{
-    padding-top: 80px;      /* antes mayor: lo subimos */
-    padding-bottom: 64px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center -20rem; /* mueve 40px hacia arriba */
   }
-  .slogan-logo{
-    max-width: 300px;
-    display: block;
-    margin: 0 auto 10px !important;  /* poco espacio bajo el logo */
-  }
-  .slogan-title{
-    margin-top: 0 !important;        /* sin separación extra arriba */
-    margin-bottom: 0.4rem;           /* opcional: micro separación */
-  }
-  button.learn-more{
-    margin-top: 20px;                /* botón más cerca del slogan */
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px){
-  .slogan-section{
-    padding-top: 90px;               /* también un poco más arriba en tablet */
-    padding-bottom: 72px;
-  }
-  .slogan-logo{
-    max-width: 340px;
-    margin: 0 auto 12px !important;
-  }
-  .slogan-title{ margin-bottom: 0.5rem; }
-  button.learn-more{ margin-top: 22px; }
-}
-
-
-
-/* ===== Sección Beneficios ===== */
-/* SECCIÓN BENEFICIOS */
-.benefits-section {
-  width: 100vw;
-  min-height: 100vh;
-  margin-left: calc(-1 * (100vw - 100%)/2); /* Para cubrir el borde izquierdo incluso si hay scroll */
-  padding: 40px 0;
-  background: var(--color-light-white); /* solo color beige */
-  box-sizing: border-box;
-  overflow-x: hidden;
-  padding-bottom: 10rem;
-}
-
-.benefits-title {
-  text-align: center;
-  color: var(--color-dark-forest);
-  font-family: 'Marcellus', serif;
-  font-size: 3.5rem;
-  margin-bottom: 140px; /* aumenta aún más la separación con las cartas */
-  top: 20px;
-}
-
-.benefits-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px; /* más separación entre cartas */
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-.benefit-card {
-  padding: 0.9em 0.9em 0.9em 0.9em; /* menos padding */
-  box-shadow: 16px 16px 30px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  padding-top: 1.4em;
-  aspect-ratio: 1 / 1;
-  font-size: 1.25rem; /* más chico */
-  text-align: center;
-  position: relative;
-  min-width: 0;
-  min-height: 0;
-  background: #fff !important;
-  color: var(--color-dark-forest) !important;
-}
-
-/* Elimina o comenta los selectores que alternan color por paridad */
-/*.benefit-card:nth-child(odd),
-.benefit-card:nth-child(even) {
-  /!* background y color ahora se definen en .benefit-card *!/
-}*/
-
-.benefit-card:hover {
-  transform: translateY(-5px) rotateX(4deg) rotateY(4deg);
-  box-shadow: 12px 12px 20px rgba(0,0,0,0.25);
-}
-
-/* Cartas columna izquierda (fondo light white, texto dark forest) */
-.benefit-card:nth-child(odd) {
-  background: var(--color-light-white);
-  color: var(--color-dark-forest);
-}
-
-/* Cartas columna derecha (fondo dark forest, texto light white) */
-.benefit-card:nth-child(even) {
-  background: var(--color-dark-forest);
-  color: var(--color-light-white);
-}
-
-.benefits-section.light .benefits-title {
-  color: var(--color-dark-forest);
-}
-
-/* Fondo izquierdo oscuro → título light white */
-.benefits-section.dark .benefits-title {
-  color: var(--color-light-white);
-}
-
-.benefits-title span {
-  color: var(--color-dark-forest);
-  margin-left: 3rem;
-  font-family: 'Playfair Display', serif;
-}
-
-.benefit-text {
-  font-size: 1.15rem; /* texto más grande */
-  font-weight: 300;
-  margin-top: 0.3rem;
-  line-height: 1.4;
-  max-width: 90%;
-  line-height: 1.4;
-  max-width: 90%;
-}
-
-.benefit-card h3 {
-  margin-top: 0;       /* elimina espacio extra arriba */
-  margin-bottom: 0.5rem;
-  position: absolute;  /* fijamos posición dentro de la carta */
-  top: 0.8rem;         /* lo acercamos al borde superior */
-  font-size: 2.1rem; /* título más grande */
-}
-
-
-.benefit-text {
-  margin-top: auto;   /* empuja hacia abajo desde el título */
-  margin-bottom: auto;/* y hacia arriba desde el fondo */
-}
-
-
-.benefit-title {
-  position: relative;
-  display: inline-block;
-  padding-bottom: 0.5rem; /* espacio para el subrayado */
-}
-
-.benefit-title::before,
-.benefit-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0; /* justo debajo del texto */
-  height: 3px; /* grosor del subrayado */
-  border-radius: 2px;
-}
-
-.benefit-title::before {
-  left: 0;
-  width: 100%;
-  background-color: #014421; /* Dark Forest */
-  z-index: 1;
-}
-
-.benefit-title::after {
-  left: 0;
-  width: 50%; /* segundo subrayado más corto */
-  background-color: #f5f5f5; /* Light White */
-  z-index: 2;
-}
-
-
-/* ===== Responsive Benefits (shrink only) ===== */
-@media (max-width: 1024px) {
-  .benefits-title{
-    font-size: clamp(2.4rem, 5.6vw, 3rem);
-    margin-bottom: 96px;
-  }
-  .benefits-grid{
-    max-width: 500px;
-    gap: 22px;
-  }
-  .benefit-card{
-    font-size: 1.05rem;
-    padding: 1rem;
-    padding-top: 1.1rem;
-    box-shadow: 12px 12px 24px rgba(0,0,0,.14);
-  }
-  .benefit-card h3{
-    font-size: 1.6rem;
-    top: .6rem;
-  }
-  .benefit-text{
-    font-size: .95rem;
-  }
-  .benefit-title::before,
-  .benefit-title::after{
-    height: 2.5px;
-  }
-}
-
-@media (max-width: 768px) {
-  .benefits-title{
-    font-size: clamp(2rem, 6.5vw, 2.4rem);
-    margin-bottom: 72px;
-  }
-  .benefits-grid{
-    max-width: 420px;
-    gap: 16px;
-  }
-  .benefit-card{
-    font-size: .95rem;
-    padding: .9rem;
-    padding-top: 1rem;
-    box-shadow: 10px 10px 20px rgba(0,0,0,.12);
-  }
-  .benefit-card h3{
-    font-size: 1.45rem;
-    top: .55rem;
-  }
-  .benefit-text{
-    font-size: .9rem;
-  }
-  .benefit-title::before,
-  .benefit-title::after{
-    height: 2px;
-  }
-}
-
-@media (max-width: 480px) {
-  .benefits-title{
-    font-size: clamp(1.8rem, 7vw, 2.1rem);
-    margin-bottom: 56px;
-  }
-  .benefits-grid{
-    max-width: 360px;
-    gap: 12px;
-  }
-  .benefit-card{
-    font-size: .9rem;
-    padding: .8rem;
-    padding-top: .9rem;
-  }
-  .benefit-card h3{
-    font-size: 1.3rem;
-    top: .5rem;
-  }
-  .benefit-text{
-    font-size: .88rem;
-  }
-}
-
-
-/** SECCION SERVICIOS**/
-
-.services{
-	align-items: flex-start;
-
-	display: flex;
-	min-height: 100%;
-	justify-content: center;
-	padding: var(--spacing-xxl, 64px) var(--spacing-l, 24px);
-  }
-  
-  .services .card-grid{
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	grid-column-gap: var(--spacing-l, 24px);
-	grid-row-gap: var(--spacing-l, 24px);
-	max-width: var(--width-container, 1200px);
-	width: 100%;
-  }
-  
-  @media (min-width: 540px){
-	.services .card-grid{ grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 960px){
-	.services .card-grid{ grid-template-columns: repeat(4, 1fr); }
-  }
-  
-  .services .card{
-	position: relative;
-	display: block;
-	list-style: none;
-	text-decoration: none;
-	outline: none;
-  }
-  
-  .services .card::before{
-	content: '';
-	display: block;
-	padding-bottom: 150%;
-	width: 100%;
-  }
-  
-  .services .card__background{
-	background-size: cover;
-	background-position: center;
-	border-radius: var(--spacing-l, 24px);
-	bottom: 0;
-	filter: brightness(0.90) saturate(1.6) contrast(0.95);
-	left: 0;
-	position: absolute;
-	right: 0;
-	top: 0;
-	transform-origin: center;
-	transform: scale(1) translateZ(0);
-	transition: filter 200ms linear, transform 200ms linear;
-  }
-  
-  .services .card:hover .card__background,
-  .services .card:focus .card__background{
-	transform: scale(1.05) translateZ(0);
-  }
-  
-  .services .card-grid:hover > .card:not(:hover) .card__background{
-	filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
-  }
-  
-  .services .card__content{
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: var(--spacing-l, 24px);
-	z-index: 3; /* por encima del decor */
-  }
-  
-  .services .card__category{
-	color: var(--text-light, rgba(255,255,255,.65));
-	font-size: 0.9rem;
-	margin-bottom: var(--spacing-s, 8px);
-	text-transform: uppercase;
-  }
-  
-  .services .card__heading{
-	color: var(--color-dark-forest);
-	font-size: 1.9rem;
-	line-height: 1.4;
-	text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
-	word-spacing: 100vw; /* ayuda a cortar en varias líneas */
-  }
-  
-  /* SVG decor fino arriba a la derecha */
-  .services .card__decor{
-	position: absolute;
-	top: calc(var(--spacing-l, 24px) - 4px);
-	right: calc(var(--spacing-l, 24px) - 4px);
-	width: 56px;
-	height: 56px;
-	z-index: 2;
-	pointer-events: none;
-	stroke: var(--card-decor-color, rgba(255,255,255,.85));
-	stroke-width: 1;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-	fill: none;
-	opacity: .95;
-	filter: drop-shadow(0 1px 2px rgba(0,0,0,.35));
-  }
-  
-  /* Accesibilidad / reduce motion */
-  @media (prefers-reduced-motion: reduce){
-	.services .card__background{ transition: none; transform: none; }
-  }
-
-  /* Columnas de ancho fijo, el conjunto queda centrado */
-.services .card-grid{
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(260px, 260px));
-	gap: var(--spacing-l, 24px);
-	margin: 0 auto;
-	justify-content: center;    /* centra los tracks dentro del contenedor */
-	width: min(100%, var(--width-container, 1200px));
-}
-
-
-/* El link ocupa toda la carta */
-.services .card{ position: relative; }
-.services .card::before{ content:''; display:block; padding-bottom:150%; }
-.services .card__link{ position:absolute; inset:0; display:block; }
-
-/* Remove styles for .card__btn */
-
-.card-button {
-  position: absolute;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  font-weight: 600;
-  font-size: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: white; /* Default color */
-}
-
-.card-button p {
-  margin: 0;
-  color: white; /* Default text color */
-  transition: color 0.2s ease;
-}
-
-.card-button svg {
-  color: white; /* Default icon color */
-  transition: transform 0.2s, color 0.2s;
-}
-
-.card-button:hover svg,
-.card-button:hover p {
-  color: var(--color-dark-forest); /* Change to dark forest on hover */
-}
-
-.card-button::after {
-  content: "";
-  position: absolute;
-  bottom: -7px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--color-dark-forest); /* Underline color */
-  transition: width 0.3s ease-out;
-}
-
-.card-button:hover::after {
-  width: 100%;
-}
-
-
-/* ===== Botón minimalista "corazón / Ver más" (scope: #services) ===== */
-.services .heart-btn{
-	all: unset;
-	box-sizing: border-box;
-  
-	position: absolute;
-	bottom: var(--spacing-l, 24px);
-	right: var(--spacing-l, 24px);
-	z-index: 5;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 50px;
-	height: 50px;
-	padding: 0;
-	border-radius: 50%;
-	cursor: pointer;
-	border: 2px solid var(--color-dark-forest); /* Green border */
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.16);
-	transition: width 0.3s, background-color 0.3s, border-radius 0.3s, transform 0.2s;
-	overflow: hidden;
-  }
-  
-  .services .heart-btn .heartIcon{
-	width: 14px;
-	height: 14px;
-	color: var(--color-dark-forest); /* Green heart */
-	transition: transform 0.3s, width 0.3s, color 0.3s;
-  }
-  
-  .services .heart-btn::before{
-	content: "Ver más";
-	position: absolute;
-	top: -20px;
-	color: var(--color-dark-forest); /* Green text */
-	font-size: 2px;
-	letter-spacing: 0.2px;
-	transition: transform 0.3s, font-size 0.3s, opacity 0.3s;
-	opacity: 0;
-  }
-  
-  .services .heart-btn:hover{
-	width: 140px;
-	border-radius: 50px;
-	background-color: var(--color-dark-forest); /* Dark forest background on hover */
-  }
-  .services .heart-btn:hover .heartIcon{
-	width: 0; /* Make the heart icon disappear */
-	opacity: 0; /* Ensure it's invisible */
-	transition: opacity 0.3s, width 0.3s;
-  }
-  .services .heart-btn:hover::before{
-	font-size: 16px; /* Slightly larger text */
-	opacity: 1;
-	transform: translateY(30px);
-	color: white; /* White text on hover */
-  }
-  
-  .services .card__link{ z-index: 1; }
-  
-  .services .heart-btn:hover{ transform: translateY(-1px); }
-  
-  .services .heart-btn:focus-visible{
-	outline: 2px solid rgba(255, 255, 255, 0.9);
-	outline-offset: 2px;
-  }
-
-.services .card:hover .heart-btn {
-  width: 140px;
-  border-radius: 50px;
-  background-color: var(--color-dark-forest); /* Dark forest background */
-  transform: translateY(-1px); /* Slight elevation */
-}
-
-.services .card:hover .heart-btn .heartIcon {
-  width: 0; /* Make the heart icon disappear */
-  opacity: 0; /* Ensure it's invisible */
-  transition: opacity 0.3s, width 0.3s;
-}
-
-.services .card:hover .heart-btn::before {
-  font-size: 16px; /* Slightly larger text */
-  opacity: 1;
-  transform: translateY(30px);
-  color: white; /* White text */
-}
-
-/* Botón siempre activo en móviles/touch */
-@media (hover: none), (pointer: coarse) {
-	.services .heart-btn{
-	  width: 140px;                          /* estado expandido */
-	  border-radius: 50px;
-	  transform: none;                        /* sin empujones raros */
-	}
-	.services .heart-btn .heartIcon{
-		display: none !important;
-	  }
-	.services .heart-btn::before{
-		color: var(--color-dark-forest);
-	  content: "Ver más";
-	  text-align: center;
-	  justify-content: center;
-	  font-size: 1.2rem;
-	  opacity: 1;
-	  transform: translateY(30px);
-	}
-  
-	/* Por si alguna regla de hover de la tarjeta intentara activarlo,
-	   mantenemos el estado fijo igual. */
-	.services .card:hover .heart-btn,
-	.services .card:focus .heart-btn{
-	  width: 140px;
-	  border-radius: 50px;
-	  transform: none;
-	  text-align: center;
-	  justify-content: center;
-	}
-  }
-
-
-.services__title{
-	color: var(--color-dark-forest);
-	font-size: 2rem;
-	margin-bottom: var(--spacing-l, 24px);
-	text-align: center;
-}
-
-/* Orden en Services: título arriba, luego sub-sección, luego cards */
-.services{
-  display: flex;
-  flex-direction: column;         /* apila hijos en columna */
-  align-items: center;
-}
-
-.services .services__title{
-  order: 0;                       /* 1º */
-  width: min(100%, var(--width-container, 1200px));
-  margin: 0 auto var(--spacing-xxl, 64px);
-  text-align: center;
-}
-
-.services .services__sub{ order: 1; }   /* 2º (si la tenés) */
-.services .card-grid{ order: 2; }       /* 3º: las cartas */
