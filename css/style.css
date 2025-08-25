@@ -1,227 +1,432 @@
-
 /* ==========================
    IMPORTAR TIPOGRAFÍAS
    ========================== */
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
 @font-face {
-  font-family: 'Signature Monoline';
-  src: url('../assets/fonts/SignatureMonolineScriptRegular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
+    font-family: 'Signature Monoline';
+    src: url('../assets/fonts/SignatureMonolineScriptRegular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 /* ==========================
-   VARIABLES GLOBALES
-   ========================== */
+      VARIABLES GLOBALES
+      ========================== */
 :root {
-    --color-bg: #ece9e2;
-    --color-dark: #000000;
-    --color-accent: #112f15;
+  --color-bg: #ece9e2;
+  --color-dark: #000000;
+  --color-accent: #112f15;
 
-    --font-primary: 'Gowun Batang', serif;
-    --font-script: 'Signature Monoline', cursive;
+  --font-primary: 'Gowun Batang', serif;
+  --font-script: 'Signature Monoline', cursive;
+  --header-h: 7.2rem; /* 72px */
 }
 
-/* ==========================
-   ESTILOS BASE
-   ========================== */
+   /* ==========================
+      ESTILOS BASE
+      ========================== */
 html {
-    font-size: 62.5%; /* 1rem = 10px */
-    scroll-behavior: smooth;
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--color-bg);
-    color: var(--color-dark);
-    font-family: var(--font-primary);
-    font-size: 1.6rem;   /* 16px */
-    line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  line-height: 1.6;
 }
 
-/* ==========================
-   TITULOS Y TEXTOS
-   ========================== */
+   /* ==========================
+      TITULOS Y TEXTOS
+      ========================== */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
-    color: var(--color-accent);
-    margin: 0 0 2rem 0;
+  font-family: var(--font-primary);
+  color: var(--color-accent);
+  margin: 0 0 2rem 0;
 }
 
-h1 { font-size: 3.2rem; } /* 32px */
-h2 { font-size: 2.4rem; } /* 24px */
-h3 { font-size: 2rem; }   /* 20px */
+h1 { font-size: 3.2rem; }
+h2 { font-size: 2.4rem; }
+h3 { font-size: 2rem; }
 
 p {
-    margin: 0 0 1.6rem 0;
-    font-size: 1.6rem; /* 16px */
+  margin: 0 0 1.6rem 0;
+  font-size: 1.6rem;
 }
 
 .signature {
-    font-family: var(--font-script);
-    font-size: 2.4rem; /* 24px */
-    color: var(--color-accent);
+  font-family: var(--font-script);
+  font-size: 2.4rem;
+  color: var(--color-accent);
 }
 
-/* ==========================
-   BOTONES
-   ========================== */
+   /* ==========================
+      BOTONES
+      ========================== */
 .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    border-radius: 0.8rem;
-    font-family: var(--font-primary);
-    font-weight: bold;
-    font-size: 1.6rem;
-    text-decoration: none;
-    transition: all 0.3s ease;
+  display: inline-block;
+  padding: 1rem 2.2rem;
+  border-radius: 99.9rem;
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-decoration: none;
+  transition: filter .2s ease;
 }
 
 .btn--primary {
-    color: #fff;
+  text-transform: uppercase;
+  color:#fff;
 }
+.btn--primary:hover{ filter: brightness(.92); }
+
+   /* ==========================
+      CONTENEDOR
+      ========================== */
+   .container{
+       max-width: 120rem;
+       margin: 0 auto;
+       padding: 0 2rem;
+   }
+   
+   /* Barra superior */
+   .topbar{
+       background: var(--color-bg);
+       position: sticky;
+       top: 0;
+       z-index: 50;
+   }
+   
+   /* Nav */
+   .nav{
+       display: grid;
+       grid-template-columns: 1fr auto 1fr;
+       align-items: center;
+       min-height: 6.4rem;
+       padding: 2rem 0;
+       gap: 2rem;
+   }
+   .nav__list{
+       list-style: none;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       gap: 6.4rem;
+       margin: 0;
+       padding: 0;
+   }
+   .nav a{
+       font-family: var(--font-primary);
+       font-size: 1.8rem;
+       color: var(--color-dark);
+       text-decoration: none;
+       letter-spacing: .02em;
+   }
+   .nav a:hover{ color: var(--color-accent); }
+   
+   /* Logo */
+   .brand{
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+       height: 3.8rem;
+   }
+   .brand__img{
+       height: 100%;
+       width: auto;
+       display: block;
+       transform: scale(11);
+       transform-origin: center;
+   }
+   
+   /* ==========================
+      HERO
+      ========================== */
+   .hero {
+       height: 92vh;
+       overflow: hidden;
+   }
+   .hero__img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       object-position: center -20rem;
+   }
+   
+   /* ==========================
+      HAMBURGUESA
+      ========================== */
+   .nav__toggle{
+     display: none;
+     width: 3.2rem;
+     height: 2.6rem;
+     background: transparent;
+     border: 0;
+     cursor: pointer;
+     position: relative;
+   }
+   .nav__bar{
+     position: absolute;
+     left: 0; right: 0;
+     height: 0.2rem;
+     background: var(--color-dark);
+     border-radius: 0.2rem;
+   }
+   .nav__bar:nth-child(1){ top: 0; }
+   .nav__bar:nth-child(2){ top: 1.2rem; }
+   .nav__bar:nth-child(3){ bottom: 0; }
+   
+   /* ==========================
+      MENU DROPDOWN (unificado)
+      ========================== */
+   #nav-drawer{
+     position: absolute;
+     top: var(--header-h);
+     left: 0;
+     right: 0;
+     width: 100vw;
+     margin-left: calc(50% - 50vw);
+   
+     background: var(--color-bg);
+     box-shadow: 0 1.2rem 2.4rem rgba(0,0,0,.14);
+     border-radius: 0;
+   
+     /* altura solo del contenido */
+     height: auto;
+     max-height: none;
+     overflow: hidden;
+   
+     transform: translateY(-1rem);
+     opacity: 0;
+     visibility: hidden;
+     pointer-events: none;
+     transition: transform .22s ease, opacity .22s ease;
+     z-index: 1100;
+     padding: 3rem 0 4rem;
+   }
+   #nav-drawer.is-open{
+     transform: translateY(0);
+     opacity: 1;
+     visibility: visible;
+     pointer-events: auto;
+   }
+   
+   /* lista centrada */
+   #nav-drawer .nav__drawer-list{
+     list-style: none;
+     margin: 0;
+     padding: 0;
+     display: grid;
+     gap: 1.8rem;
+     justify-items: center;
+   }
+   #nav-drawer .nav__drawer-list a{
+     font-family: var(--font-primary);
+     font-size: 1.9rem;
+     font-weight: 700;
+     letter-spacing: .06em;
+     text-transform: uppercase;
+     color: var(--color-dark);
+     text-decoration: none;
+   }
+   
+   /* Botón cerrar */
+   #nav-drawer .nav__close{
+     position: absolute;
+     top: .8rem; right: 1.2rem;
+     background: transparent;
+     border: 0;
+     font-size: 2.4rem;
+     line-height: 1;
+     color: var(--color-dark);
+     cursor: pointer;
+   }
+   
+   /* Quitar overlay */
+   .nav.is-overlay::after{ display: none; }
+   
+   /* ==========================
+      MEDIA QUERIES
+      ========================== */
+   @media (max-width: 90rem){
+     .nav__list{ gap: 3.2rem; }
+     .brand__img{ transform: scale(1.35); }
+   }
+   @media (max-width: 64rem){
+     .nav{
+       grid-template-columns: 1fr auto 1fr;
+       align-items: center;
+     }
+     .brand{ justify-self: center; }
+     .nav__list{ display: none; }
+     .nav__toggle{ display: inline-flex; justify-self: end; }
+     .brand__img{ transform: scale(1.15); }
+   }
 
 
-
-
-/* Contenedor centrado y ancho cómodo */
-.container{
-    max-width: 120rem;     /* 1200px */
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-  
-  /* Barra superior */
-  .topbar{
-    background: var(--color-bg);
-    position: sticky;
-    top: 0;
-    z-index: 50;
-  }
-  
-  /* Nav en 3 columnas con logo centrado */
+/* === Mobile: logo centrado y hamburguesa a la derecha === */
+@media (max-width: 64rem){
   .nav{
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    grid-template-columns: 1fr auto 1fr;  /* espacio | logo | hamburguesa */
     align-items: center;
-    min-height: 6.4rem;      /* antes 9.6rem → más compacto */
-    padding: 2rem 0;       /* menos padding arriba/abajo */
-    gap: 2rem;
   }
-  
-  /* Listas izquierda y derecha centradas dentro de su columna */
-  .nav__list{
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6.4rem;                           /* separación como la referencia */
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Enlaces menú */
-  .nav a{
-    font-family: var(--font-primary);      /* Gowun Batang */
-    font-size: 1.8rem;
-    color: var(--color-dark);
-    text-decoration: none;
-    letter-spacing: .02em;
-  }
-  .nav a:hover{ color: var(--color-accent); }
-  
-  /* Logo grande y centrado */
+
+  /* Logo al centro (columna 2) */
   .brand{
+    grid-column: 2;
+    justify-self: center;
+    order: 0;
+  }
+
+  /* Botón hamburguesa a la derecha (columna 3) */
+  .nav__toggle{
+    grid-column: 3;
+    justify-self: end;
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
+
+  /* Ocultamos las listas en móvil */
+  .nav__list{ display: none; }
+  
+}
+
+/* Ajuste en tablets */
+@media (max-width: 90rem){
   .brand__img{
-    height: 4.4rem;          /* antes 5.6rem → baja el bloque */
-    width: auto;
+    transform: scale(1.1);
   }
-  
-  /* Botón de contacto tipo píldora */
-  .btn{
-    display: inline-block;
-    padding: 1rem 2.2rem;
-    border-radius: 999rem;
-    font-size: 1.6rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: filter .2s ease;
-  }
-  .btn--primary{
-    text-transform: uppercase;      /* #112f15 */
-    color:#fff;
-  }
-  .btn--primary:hover{ filter: brightness(.92); }
-  
-  /* Responsive: mantiene el logo centrado y reduce espacios */
-  @media (max-width: 900px){
-    .nav__list{ gap: 3.2rem; }
-    .brand__img{ height: 4.6rem; }
-  }
-  
-  @media (max-width: 640px){
-    .nav{
-      grid-template-columns: 1fr;          /* pila en mobile */
-      gap: 1.2rem;
-      padding: 1.2rem 0;
-    }
-    .brand{ order: -1; }                   /* logo arriba */
-    .nav__list{ flex-wrap: wrap; gap: 2rem; }
-  }
+}
 
-/* Alto lógico del header (no cambia) */
-.nav{
-    min-height: 6.4rem;          /* o el valor que venías usando */
-    align-items: center;
-    overflow: visible;            /* por si el logo escala por fuera */
-  }
-  
-  /* Alto lógico del espacio del logo */
-  .brand{
-    height: 3.8rem;               /* el header no crecerá más que esto */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Agrandamos el logo sin modificar el flujo */
+/* Ajuste en móviles */
+@media (max-width: 64rem){
   .brand__img{
-    height: 100%;
-    width: auto;
-    display: block;
-    transform: scale(11);       /* ⬅️ ajustá este factor hasta que te guste */
-    transform-origin: center;
+    height: 4rem;
+    transform: scale(7); /* logo más compacto en mobile */
   }
-  
-  /* Por si el texto queda un pelín descentrado verticalmente */
-  .nav a{ line-height: 1; }
-  
-  /* Responsivo: reducimos la escala para que no invada el menú en mobile */
-  @media (max-width: 900px){
-    .brand{ height: 3.4rem; }
-    .brand__img{ transform: scale(1.35); }
-  }
-  @media (max-width: 640px){
-    .brand{ height: 3.2rem; }
-    .brand__img{ transform: scale(1.15); }
-  }
+}
 
+/* === Menú desplegable un poco más abajo del header === */
+#nav-drawer{
+  top: calc(var(--header-h, 7.2rem) + 2rem) !important; /* header + espacio extra */
+}
 
-  /* ======= HERO ======= */
-  .hero {
-    height: 92vh; /* o el alto que elijas */
-    overflow: hidden;
-  }
-  
-  .hero__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center -20rem; /* mueve 40px hacia arriba */
-  }
+/* === Hamburguesa que se transforma en cruz === */
+.nav__toggle.is-open .nav__bar:nth-child(1){
+  transform: rotate(45deg);
+  top: 1.2rem;   /* centro */
+}
+.nav__toggle.is-open .nav__bar:nth-child(2){
+  opacity: 0;    /* desaparece */
+}
+.nav__toggle.is-open .nav__bar:nth-child(3){
+  transform: rotate(-45deg);
+  bottom: 1.2rem; /* centro */
+}
+
+/* Ocultar la X interna del panel */
+#nav-drawer .nav__close{ display:none !important; }
+
+/* Transiciones suaves en las barritas */
+.nav__toggle .nav__bar{
+  transition: transform .22s ease, opacity .22s ease, top .22s ease, bottom .22s ease;
+}
+
+/* Al abrir: la hamburguesa se vuelve cruz */
+.nav__toggle.is-open .nav__bar:nth-child(1){
+  transform: rotate(45deg);
+  top: 1.2rem;
+}
+.nav__toggle.is-open .nav__bar:nth-child(2){
+  opacity: 0;
+}
+.nav__toggle.is-open .nav__bar:nth-child(3){
+  transform: rotate(-45deg);
+  bottom: 1.2rem;
+}
+
+/* =========================
+   Animaciones dropdown
+   ========================= */
+
+/* Estado base: oculto pero medible */
+#nav-drawer{
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-1.2rem);
+}
+
+/* Abrir */
+#nav-drawer.is-open{
+  visibility: visible;
+  pointer-events: auto;
+  animation: dropdownIn .28s ease both;
+}
+
+/* Cerrar (usamos clase temporal) */
+#nav-drawer.is-closing{
+  visibility: visible;              /* para que se vea mientras anima */
+  pointer-events: none;
+  animation: dropdownOut .22s ease both;
+}
+
+/* Keyframes */
+@keyframes dropdownIn{
+  from{ opacity: 0; transform: translateY(-1.2rem); }
+  to  { opacity: 1; transform: translateY(0); }
+}
+@keyframes dropdownOut{
+  from{ opacity: 1; transform: translateY(0); }
+  to  { opacity: 0; transform: translateY(-1rem); }
+}
+
+/* Stagger de los ítems */
+#nav-drawer .nav__drawer-list li{
+  opacity: 0;
+  transform: translateY(-.4rem);
+}
+#nav-drawer.is-open .nav__drawer-list li{
+  animation: itemIn .24s ease both;
+}
+#nav-drawer.is-open .nav__drawer-list li:nth-child(1){ animation-delay: .05s; }
+#nav-drawer.is-open .nav__drawer-list li:nth-child(2){ animation-delay: .10s; }
+#nav-drawer.is-open .nav__drawer-list li:nth-child(3){ animation-delay: .15s; }
+#nav-drawer.is-open .nav__drawer-list li:nth-child(4){ animation-delay: .20s; }
+
+@keyframes itemIn{
+  from{ opacity: 0; transform: translateY(-.4rem); }
+  to  { opacity: 1; transform: translateY(0); }
+}
+
+/* Hamburguesa → X (suavizada) */
+.nav__toggle .nav__bar{
+  transition: transform .22s ease, opacity .22s ease, top .22s ease, bottom .22s ease;
+}
+.nav__toggle.is-open .nav__bar:nth-child(1){ transform: rotate(45deg); top: 1.2rem; }
+.nav__toggle.is-open .nav__bar:nth-child(2){ opacity: 0; }
+.nav__toggle.is-open .nav__bar:nth-child(3){ transform: rotate(-45deg); bottom: 1.2rem; }
+
+/* quitar mayúsculas a todos */
+#nav-drawer .nav__drawer-list a{
+  text-transform: none; /* los demás en minúsculas */
+}
+
+/* solo el último (Contacto) en mayúsculas */
+#nav-drawer .nav__drawer-list li:last-child a{
+  text-transform: uppercase;
+}
+
+#nav-drawer .nav__drawer-list a{
+  text-transform: none;
+}
+#nav-drawer .nav__drawer-list a.contact-link{
+  text-transform: uppercase;
+}

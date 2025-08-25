@@ -25,6 +25,23 @@
               <li><a href="#servicios">Servicios</a></li>
               <li><a href="#contacto" class="btn btn--primary">Contacto</a></li>
             </ul>
+            <!-- Botón hamburguesa (visible solo en móvil) -->
+            <button class="nav__toggle" aria-label="Abrir menú" aria-controls="nav-drawer" aria-expanded="false">
+              <span class="nav__bar"></span>
+              <span class="nav__bar"></span>
+              <span class="nav__bar"></span>
+            </button>
+
+            <!-- Drawer móvil con los enlaces -->
+            <div id="nav-drawer" class="nav__drawer" role="dialog" aria-modal="true">
+              <button class="nav__close" aria-label="Cerrar menú">&times;</button>
+              <ul class="nav__drawer-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto" class="btn btn--primary">Contacto</a></li>
+              </ul>
+            </div>
           </nav>
         </div>
     </header>
