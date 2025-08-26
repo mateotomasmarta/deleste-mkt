@@ -3,12 +3,22 @@
    ========================== */
 @import url('https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap');
 
-@font-face {
-    font-family: 'Signature Monoline';
-    src: url('../assets/fonts/SignatureMonolineScriptRegular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+/* Signatura Monoline – Regular */
+
+
+/* Fuentes globales */
+@font-face{
+  font-family: 'Signatura Monoline';
+  src: url('../assets/fonts/Signatura Monoline.ttf') format('truetype'),
+       url('../assets/fonts/signatura_monoline/Signatura\ Monoline.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
 /* ==========================
       VARIABLES GLOBALES
       ========================== */
@@ -17,8 +27,8 @@
   --color-dark: #000000;
   --color-accent: #112f15;
 
-  --font-primary: 'Gowun Batang', serif;
-  --font-script: 'Signature Monoline', cursive;
+  --font-primary: 'Gowun Batang', serif;         /* párrafos y resto */
+  --font-script: 'Signatura Monoline', cursive;  /* títulos y “firma” */
   --header-h: 7.2rem; /* 72px */
 }
 
@@ -59,11 +69,17 @@ p {
   font-size: 1.6rem;
 }
 
-.signature {
-  font-family: var(--font-script);
-  font-size: 2.4rem;
-  color: var(--color-accent);
+/* “Identidad que trasciende” y cualquier .signature */
+.signature{
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  color: var(--color-dark);
+  font-size: clamp(3.8rem, 6vw, 7.6rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+  margin: 0 0 2.8rem;
 }
+
 
    /* ==========================
       BOTONES
@@ -430,3 +446,343 @@ p {
 #nav-drawer .nav__drawer-list a.contact-link{
   text-transform: uppercase;
 }
+
+/* ===== Sección Identidad (igual a la referencia) ===== */
+.identity{
+  padding: 8rem 0 9rem;
+  background: linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,0) 55%);
+}
+
+.identity__content{
+  text-align: center;
+  max-width: 110rem;
+}
+
+/* “Identidad que trasciende” (script) */
+/* “Identidad que trasciende” y cualquier .signature */
+.signature{
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  color: var(--color-dark);
+  font-size: clamp(3.8rem, 6vw, 7.6rem);
+  line-height: 1.08;
+  letter-spacing: 0;
+  margin: 0 0 2.8rem;
+}
+
+
+/* Titular grande en mayúsculas, sin bordes */
+.identity__headline{
+  font-family: var(--font-primary);
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  font-size: clamp(2.4rem, 3.4vw, 5.2rem);
+  line-height: 1.28;
+  margin: 0 auto 3.6rem;
+  max-width: 96rem; /* controla el ancho como en la imagen */
+}
+
+/* Párrafo angosto y suave */
+.identity__desc{
+  max-width: 78rem;
+  margin: 0 auto 4rem;
+  font-size: 1.8rem;
+  line-height: 1.7;
+  opacity: .9;
+}
+
+/* Botón oscuro centrado */
+.identity__cta{
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  border-radius: .4rem;
+  background: #0f0f0f;           /* oscuro como en la captura */
+  color: #fff;
+  border: .2rem solid #0f0f0f;
+  text-decoration: none;
+}
+.identity__cta:hover{
+  background: transparent;
+  color: #0f0f0f;
+}
+
+/* Responsive fino */
+@media (max-width: 64rem){
+  .identity{ padding: 6rem 0 7rem; }
+  .identity__headline{ font-size: clamp(2.4rem, 5.6vw, 4rem); max-width: 90%; }
+  .identity__desc{ font-size: 1.7rem; max-width: 90%; }
+  .identity__cta{ font-size: 1.8rem; padding: 1.4rem 2.6rem; }
+}
+
+/* === IDENTIDAD → igual a la 2ª imagen === */
+
+/* Título script (arriba): negro, fino y grande */
+.identity .signature{
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  color: var(--color-dark) !important;   /* quitar el verde */
+  font-size: clamp(3.6rem, 6vw, 7.2rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+  margin: 0 0 2.8rem;
+}
+
+/* Titular grande en mayúsculas, sin “bold” pesado */
+.identity__headline{
+  font-family: var(--font-primary);
+  font-weight: 400;                       /* antes 700 → demasiado grueso */
+  text-transform: uppercase;
+  color: var(--color-dark);
+  font-size: clamp(2.6rem, 3.4vw, 5.2rem);
+  line-height: 1.28;
+  letter-spacing: .02em;
+  max-width: 96rem;                       /* ancho como la referencia */
+  margin: 0 auto 3.6rem;
+}
+
+/* Párrafo más angosto y suave */
+.identity__desc{
+  max-width: 78rem;
+  margin: 0 auto 4rem;
+  font-size: 1.8rem;
+  line-height: 1.7;
+  opacity: .9;
+  text-align: center;
+}
+
+/* Botón oscuro centrado */
+.identity__cta{
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  border-radius: .4rem;
+  background: #0f0f0f;
+  border: .2rem solid #0f0f0f;
+  color: #fff;
+}
+.identity__cta:hover{
+  background: transparent;
+  color: #0f0f0f;
+}
+
+/* Ajustes mobile */
+@media (max-width: 64rem){
+  .identity__headline{ font-size: clamp(2.4rem, 5.6vw, 4rem); max-width: 90%; }
+  .identity__desc{ max-width: 90%; }
+  .identity__cta{ font-size: 1.8rem; padding: 1.4rem 2.6rem; }
+}
+
+/* ===== MOBILE: eliminar hueco entre HERO e IDENTIDAD ===== */
+@media (max-width: 64rem){
+  .hero{
+    height: auto !important;     /* sin 92vh en mobile */
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  .hero__img{
+    display: block;               /* quita gap por baseline */
+    width: 100%;
+    height: auto !important;      /* toma su altura real */
+    object-fit: cover;
+    object-position: center;      /* evita recortes raros */
+  }
+
+  /* La sección de identidad arranca pegada al hero */
+  .identity{
+    margin-top: 0 !important;
+    padding-top: 2.4rem !important;  /* ajusta si querés menos/mas aire */
+  }
+}
+
+
+/* =========================
+   2) Sección IDENTIDAD (final)
+   Reemplaza todo lo anterior de identidad
+   ========================= */
+
+/* Contenedor y fondo suave como la referencia */
+.identity{
+  padding: 10rem 0 9rem;
+  background: linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,0) 55%);
+}
+
+.identity__content{
+  text-align: center;
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+/* “Identidad que trasciende” – script negro, grande y aireado */
+.signature{
+  font-family: var(--font-script), cursive !important;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--color-dark);
+  font-size: 10rem !important;
+  line-height: 1.08;          /* compacto para “firma” */
+  letter-spacing: 0;
+  margin: 0 0 2.8rem;
+}
+
+/* Titular en mayúsculas, fino (no bold pesado) y ancho controlado */
+.identity__headline{
+  font-family: var(--font-primary);
+  font-weight: 400;           /* más fino, como en la 2ª imagen */
+  text-transform: uppercase;
+  color: var(--color-dark);
+  letter-spacing: .02em;
+  line-height: 1.26;
+  font-size: 3.6rem;
+  max-width: 100rem;           /* bloque más angosto para line-breaks bonitos */
+  margin: 0 auto 3.2rem;
+}
+
+/* Párrafo suave y más angosto */
+.identity__desc{
+  max-width: 72rem;
+  margin: 0 auto 3.6rem;
+  font-size: 2rem;
+  line-height: 1.7;
+  opacity: .85;
+  text-align: center;
+}
+
+/* Botón oscuro centrado */
+.identity__cta{
+  display: inline-block;
+  padding: 1.6rem 3.2rem;
+  font-size: 2rem;
+  border-radius: .4rem;
+  background: #0f0f0f;
+  color: #fff;
+  border: .2rem solid #0f0f0f;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+.identity__cta:hover{
+  background: transparent;
+  color: #0f0f0f;
+}
+
+/* Responsive fino */
+@media (max-width: 64rem){
+  .identity{ padding: 6rem 0 7rem; }
+  .identity__headline{ font-size: clamp(2.4rem, 5.6vw, 4rem); max-width: 90%; }
+  .identity__desc{ font-size: 1.7rem; max-width: 90%; }
+  .identity__cta{ font-size: 1.8rem; padding: 1.4rem 2.6rem; }
+}
+
+/* ===== QUIÉNES SOMOS ===== */
+.about{
+  padding: 8rem 0 6rem;
+  background: linear-gradient(180deg, rgba(0,0,0,.03) 0%, rgba(0,0,0,0) 55%);
+}
+
+.about__grid{
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;   /* texto | imagen */
+  align-items: start;
+  gap: 5.6rem;
+}
+
+.about__eyebrow{
+  /* Usa la fuente script que ya cargaste (Fantelina/Signature) */
+  font-weight: 400;
+  font-size: clamp(3.6rem, 5.2vw, 6.4rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+  margin: 0 0 1.8rem;
+  color: var(--color-dark);
+}
+
+.about__text p{
+  font-family: var(--font-primary);
+  color: var(--color-dark);
+  font-size: 2.9rem;
+  line-height: 1.8;
+  margin: 0 0 2.8rem;
+  max-width: 62ch; /* ancho cómodo de lectura */
+}
+
+.about__media{
+  position: relative;
+  overflow: hidden;
+  border-radius: .4rem;
+  box-shadow: 0 1.6rem 3.2rem rgba(0,0,0,.08);
+}
+
+.about__media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Desvanecido inferior como la referencia */
+.about__fade{
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 28%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(236,233,226,.85) 60%,
+    var(--color-bg) 100%
+  );
+  pointer-events: none;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 64rem){
+  .about{ padding: 6rem 0 4rem; }
+  .about__grid{
+    grid-template-columns: 1fr;     /* una columna */
+    gap: 3.6rem;
+  }
+  .about__text{ text-align: left; }
+  .about__media{ max-width: 72rem; width: 100%; margin: 0 auto; }
+}
+
+/* ===== Ajustes ABOUT en móviles ===== */
+@media (max-width: 48rem){  /* ~768px, podés ajustar */
+  .about__grid{
+    grid-template-columns: 1fr;  /* una sola columna */
+    text-align: center;
+    gap: 2.4rem;
+  }
+
+  .about__eyebrow{
+    font-size: 6rem;  /* título más grande */
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .about__text p{
+    font-size: 1.5rem;   /* letra más chica */
+    line-height: 1.6;
+    margin: 0 0 1.8rem;
+  }
+
+  .about__media{
+    margin: 0 auto;
+    max-width: 90%;
+  }
+}
+
+/* 1) CARGO LA FUENTE CORRECTA: SIGNATURA MONOLINE */
+@font-face{
+  font-family: 'Signatura Monoline';
+  src: url('../assets/fonts/Signatura Monoline.ttf') format('truetype'),
+       url('../assets/fonts/signatura_monoline/Signatura\ Monoline.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* 2) SETEO VARIABLES: GOWUN PARA TEXTO, SIGNATURA PARA TÍTULOS/FIRMAS */
+
