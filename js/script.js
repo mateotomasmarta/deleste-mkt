@@ -41,3 +41,161 @@
     if (link) close();
     });
 })();
+
+
+// Carrusel móvil para .pillars__gallery (puntitos + autoplay cada 6s)
+(function () {
+    const MOBILE_BP = 520;           // px
+    const AUTOPLAY_MS = 6000;        // 6 segundos
+    const gallerySel = ".pillars__gallery";
+    const dotsSel = ".pillars__dots";
+  
+    let mql = window.matchMedia(`(max-width:${MOBILE_BP}px)`);
+    let gallery, slides, dotsBox;
+    let cleanupFns = [];
+    let autoplayId = null;
+    let resumeTimeout = null;
+  
+    // ---------- Utils ----------
+    function centeredIndex() {
+      const winCenter = window.innerWidth / 2;
+      let best = { idx: 0, dist: Infinity };
+      slides.forEach((el, idx) => {
+        const r = el.getBoundingClientRect();
+        const center = r.left + r.width / 2;
+        const d = Math.abs(center - winCenter);
+        if (d < best.dist) best = { idx, dist: d };
+      });
+      return best.idx;
+    }
+  
+    function updateDots() {
+      if (!gallery || !dotsBox) return;
+      const idx = centeredIndex();
+      Array.from(dotsBox.children).forEach((btn, j) =>
+        btn.setAttribute("aria-current", j === idx ? "true" : "false")
+      );
+    }
+  
+    function startAutoplay() {
+      stopAutoplay();
+      if (!slides || slides.length < 2) return;
+      autoplayId = setInterval(() => {
+        if (!mql.matches) return; // solo móvil
+        const idx = centeredIndex();
+        const next = (idx + 1) % slides.length;
+        slides[next].scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+      }, AUTOPLAY_MS);
+    }
+  
+    function stopAutoplay() {
+      if (autoplayId) clearInterval(autoplayId);
+      autoplayId = null;
+      if (resumeTimeout) clearTimeout(resumeTimeout);
+      resumeTimeout = null;
+    }
+  
+    function pauseThenResume(delayMs = 3000) {
+      stopAutoplay();
+      resumeTimeout = setTimeout(startAutoplay, delayMs);
+    }
+  
+    // ---------- Setup / Teardown ----------
+    function setupCarousel() {
+      gallery = document.querySelector(gallerySel);
+      dotsBox = document.querySelector(dotsSel);
+      if (!gallery || !dotsBox) return;
+  
+      slides = Array.from(gallery.children);
+      if (!slides.length) return;
+  
+      // Evitar duplicados de puntos
+      if (dotsBox.dataset.bound === "true") return;
+      dotsBox.dataset.bound = "true";
+  
+      // Crear puntos
+      slides.forEach((_, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", `Ir al slide ${i + 1}`);
+        b.addEventListener("click", () => {
+          slides[i].scrollIntoView({
+            behavior: "smooth",
+            inline: "center",
+            block: "nearest",
+          });
+          pauseThenResume(); // pausa breve al navegar manualmente
+        });
+        dotsBox.appendChild(b);
+        cleanupFns.push(() => b.remove());
+      });
+  
+      // Scroll listener (con rAF)
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateDots();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      gallery.addEventListener("scroll", onScroll, { passive: true });
+      cleanupFns.push(() => gallery.removeEventListener("scroll", onScroll));
+  
+      // Pausar por interacción táctil/arrastre
+      const pauseEvents = ["touchstart", "mousedown", "pointerdown"];
+      const resumeEvents = ["touchend", "mouseup", "pointerup"];
+      const onPause = () => pauseThenResume();
+      pauseEvents.forEach(ev => gallery.addEventListener(ev, onPause, { passive: true }));
+      resumeEvents.forEach(ev => gallery.addEventListener(ev, onPause, { passive: true }));
+      cleanupFns.push(() => {
+        pauseEvents.forEach(ev => gallery.removeEventListener(ev, onPause));
+        resumeEvents.forEach(ev => gallery.removeEventListener(ev, onPause));
+      });
+  
+      // Pausar si la pestaña no está visible
+      const onVis = () => (document.hidden ? stopAutoplay() : startAutoplay());
+      document.addEventListener("visibilitychange", onVis);
+      cleanupFns.push(() => document.removeEventListener("visibilitychange", onVis));
+  
+      // Resize -> re-calcula punteo
+      const onResize = () => updateDots();
+      window.addEventListener("resize", onResize);
+      cleanupFns.push(() => window.removeEventListener("resize", onResize));
+  
+      updateDots();
+      startAutoplay(); // 🔥 activa autoplay
+    }
+  
+    function teardownCarousel() {
+      stopAutoplay();
+      if (!dotsBox) dotsBox = document.querySelector(dotsSel);
+      cleanupFns.forEach((fn) => { try { fn(); } catch(_){} });
+      cleanupFns = [];
+      if (dotsBox) {
+        dotsBox.innerHTML = "";
+        dotsBox.dataset.bound = "false";
+      }
+    }
+  
+    function handleMQ(e) {
+      if (e.matches) setupCarousel();
+      else teardownCarousel();
+    }
+  
+    // Inicial
+    document.addEventListener("DOMContentLoaded", () => {
+      handleMQ(mql);
+    });
+  
+    // Reaccionar a cambios de tamaño
+    if (mql.addEventListener) mql.addEventListener("change", handleMQ);
+    else mql.addListener(handleMQ); // Safari viejo
+  })();
+  

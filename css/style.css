@@ -7,10 +7,20 @@
 
 
 /* Fuentes globales */
+/* Reemplaza el bloque que tengas por este */
 @font-face{
-  font-family: 'Signatura Monoline';
-  src: url('../assets/fonts/Signatura Monoline.ttf') format('truetype'),
-       url('../assets/fonts/signatura_monoline/Signatura\ Monoline.otf') format('opentype');
+  font-family: "Signatura Monoline";
+  /* Usa exactamente la ruta/nombre reales. Evitá espacios o escápalos con comillas. */
+  src: url("../assets/fonts/signatura-monoline.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Si solo tenés el .otf (y funciona), usa eso y quita la línea del .ttf */
+@font-face{
+  font-family: "Signatura Monoline";
+  src: url("../assets/fonts/signatura_monoline/Signatura Monoline.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -1160,5 +1170,217 @@ p {
   background: var(--color-bg);
   color: #0f0f0f;
   border: 0.2rem solid #0f0f0f;
+}
+
+
+/* ===== Sección Pilares (“No somos una agencia más”) ===== */
+.pillars{
+  background:#0f1f1a;           /* verde-negruzco como la referencia */
+  color:#f4f1eb;
+  padding: 8rem 0 6rem;
+}
+
+.pillars .signature{
+  color:#fff !important;        /* firma blanca */
+  text-align:center;
+  font-size: 6rem;
+  margin-bottom: 4rem;
+}
+
+.pillars__grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 5rem 7rem;               /* filas x columnas */
+  max-width: 110rem;
+  margin: 0 auto;
+}
+
+.pillars__title{
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 1.2;
+  color:#fff;
+  margin: 0 0 1.2rem;
+  text-align: center;
+}
+
+.pillars__text{
+  font-size: 3rem;
+  line-height: 1.8;
+  opacity:.9;
+  max-width: 48ch;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* CTA centrado */
+.pillars__cta{
+  margin-top: 4.5rem;
+  display:flex;
+  justify-content:center;
+}
+
+/* Botón claro para fondo oscuro */
+.btn--light{
+  background:#fff;
+  color:#0f0f0f;
+  border:.2rem solid #fff;
+  padding: 1.4rem 3.2rem;
+  border-radius:.4rem;
+  text-decoration:none;
+  font-weight:700;
+}
+.btn--light:hover{
+  background:transparent;
+  color:#fff;
+  border-color:#fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 64rem){
+  .pillars{ padding: 6rem 0 5rem; }
+  .pillars__grid{ grid-template-columns: 1fr; gap: 3.6rem; }
+  .pillars__text{ font-size: 1.7rem; }
+}
+
+/* Botón estilo minimalista pero más grande y alargado */
+.btn--light{
+  background: var(--color-bg);
+  color: var(--color-dark);
+  border: 2px solid #f4f1eb;
+  padding: 0.5rem 4rem;       /* más alto y más ancho */
+  font-size: 3.5rem;          /* texto más grande */
+  font-weight: 400;
+  border-radius: 0;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  letter-spacing: .5px;
+  min-width: 280px;           /* asegura que sea alargado */
+  text-align: center;
+}
+
+.btn--light:hover{
+  background: transparent;
+  color: var(--color-bg);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+/* ===== Responsive solo para celular ===== */
+@media (max-width: 480px){
+  .btn--light{
+    padding: 0.5rem 1rem; /* menos padding para que no desborde */
+    font-size: 2rem;      /* texto un poco más chico */
+    min-width: 100%;        /* ocupa todo el ancho del contenedor */
+    text-align: center;
+    display: block;         /* asegura que se vea centrado */
+  }
+
+  .pillars__cta{
+    padding-inline: 1rem;   /* espacio lateral en móviles */
+  }
+}
+
+
+
+
+/* hover sutil */
+.phone-card:hover{
+  transform: translateY(-6px);
+}
+
+
+
+
+/* Galería de 4 cartas (limpia, sin fondo/sombra) */
+.pillars__gallery{
+  margin: 3.6rem auto 4.2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.2rem;
+  max-width: 140rem;          /* más ancho total */
+}
+
+.phone-card{
+  padding: 0;                 /* quita el marco */
+  border: none;               /* sin borde */
+  border-radius: 0;           /* sin esquinas extra */
+  box-shadow: none;           /* sin sombra */
+  overflow: hidden;
+  aspect-ratio: 9 / 19.5;     /* mantiene proporción vertical */
+}
+
+.phone-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 1.6rem;      /* leve redondeado para la pantalla */
+}
+
+/* Responsive */
+@media (max-width: 992px){
+  .pillars__gallery{
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 80rem;
+  }
+}
+@media (max-width: 520px){
+  .pillars__gallery{
+    grid-template-columns: 1fr;
+    max-width: 36rem;         /* más grande en móvil */
+  }
+}
+
+/* ===== Carrusel móvil para la galería ===== */
+@media (max-width: 520px){
+  .pillars__gallery{
+    display: flex;                 /* de grid -> carrusel horizontal */
+    overflow-x: auto;
+    scroll-snap-type: x mandatory; /* scroll-snap */
+    -webkit-overflow-scrolling: touch;
+    gap: 1.2rem;
+    padding: .5rem 1rem;
+    max-width: none;               /* usa todo el ancho disponible */
+  }
+  .pillars__gallery::-webkit-scrollbar{ display:none; } /* oculta scrollbar */
+
+  .phone-card{
+    flex: 0 0 85%;                 /* ancho de cada slide */
+    scroll-snap-align: center;
+    aspect-ratio: 9 / 19.5;        /* mantiene proporción vertical */
+    border-radius: 1.2rem;
+    overflow: hidden;
+  }
+  .phone-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Puntos / indicadores */
+  .pillars__dots{
+    display: flex;
+    justify-content: center;
+    gap: .6rem;
+    margin-top: -1rem;
+  }
+  .pillars__dots button{
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    border: 0;
+    background: #7f8b85;
+    opacity: .6;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .pillars__dots button[aria-current="true"]{
+    background: #fff;
+    opacity: 1;
+    transform: scale(1.25);
+  }
 }
 
