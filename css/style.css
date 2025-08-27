@@ -1104,3 +1104,61 @@ p {
   color: var(--color-dark);
   display: block;
 }
+
+.nav a {
+  position: relative; /* necesario para el pseudo-elemento */
+  text-decoration: none; /* aseguramos que no haya subrayado por defecto */
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;   /* separación del texto */
+  width: 0;
+  height: 0.2rem;    /* grosor de la línea */
+  background: var(--color-accent); /* usa tu color verde */
+  transition: width 0.3s ease;     /* animación suave */
+}
+
+.nav a:hover::after {
+  width: 100%; /* se dibuja la línea completa al hacer hover */
+}
+
+.service__btn {
+  position: relative;
+  transition: all 0.3s ease;
+  text-decoration: none; /* evitamos subrayado nativo */
+  overflow: hidden;      /* asegura que la animación no se desborde */
+}
+
+/* Pseudo-elemento para la línea */
+.service__btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0.4rem;       /* separa un poquito del texto */
+  width: 0;
+  height: 2px;
+  background: currentColor; /* mismo color que el texto */
+  transition: width 0.3s ease;
+}
+
+/* Al hacer hover, se dibuja la línea */
+.service__btn:hover::after {
+  width: 100%;
+}
+
+/* Ghost: de borde negro a fondo negro */
+.service__btn--ghost:hover {
+  background: var(--color-dark);
+  color: #fff;
+}
+
+/* Dark: de fondo negro a fondo blanco */
+.service__btn--dark:hover {
+  background: var(--color-bg);
+  color: #0f0f0f;
+  border: 0.2rem solid #0f0f0f;
+}
+
