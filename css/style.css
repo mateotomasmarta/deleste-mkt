@@ -786,3 +786,321 @@ p {
 
 /* 2) SETEO VARIABLES: GOWUN PARA TEXTO, SIGNATURA PARA TÍTULOS/FIRMAS */
 
+/* ===== Servicios ===== */
+.services{
+  padding: 6rem 0 8rem;
+  background: linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,0) 70%);
+}
+
+.services__title{
+  text-align: center;
+  font-weight: 400;
+  font-size: clamp(3.6rem, 6vw, 9rem);
+  line-height: 1.05;
+  margin: 0 0 4.8rem;
+  color: var(--color-dark);
+}
+
+/* Tarjeta principal */
+.service__card{
+  position: relative;
+  background: #f7f4ef; /* base suave */
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* texto | imagen */
+  gap: 0;
+  border: .9rem solid #fff;            /* marco blanco grande */
+  box-shadow: 0 1.2rem 3rem rgba(0,0,0,.08);
+}
+
+/* Borde interior sutil como la ref */
+.service__card::before{
+  content: "";
+  position: absolute; inset: 1.6rem;
+  border: .2rem solid rgba(0,0,0,.16);
+  pointer-events: none;
+}
+
+/* Columna texto */
+.service__text{
+  padding: 3.6rem 3.6rem 3.2rem 3.6rem;
+}
+
+.service__eyebrow{
+  font-weight: 400;
+  font-size: clamp(3rem, 4.2vw, 4.6rem);
+  line-height: 1.1;
+  margin: 0 0 1.8rem;
+  color: var(--color-dark);
+}
+
+.service__text p{
+  font-family: var(--font-primary);
+  font-size: 1.7rem;
+  line-height: 1.75;
+  margin: 0 0 1.6rem;
+  color: var(--color-dark);
+  opacity: .95;
+}
+
+.service__lead{ margin-top: .6rem; }
+
+.service__list{
+  margin: .6rem 0 2.2rem 1.8rem;
+  padding: 0;
+  font-size: 1.7rem;
+  line-height: 1.7;
+}
+
+.service__actions{
+  display: flex;
+  gap: 1.2rem;
+}
+
+/* Botones */
+.service__btn{
+  border-radius: 0;
+  padding: 1.2rem 2.2rem;
+  font-size: 1.6rem;
+  border: .2rem solid #0f0f0f;
+}
+
+.service__btn--ghost{
+  background: transparent;
+  color: #0f0f0f;
+}
+
+.service__btn--dark{
+  background: #0f0f0f;
+  color: #fff;
+}
+
+/* Columna imagen */
+.service__media{
+  position: relative;
+  overflow: hidden;
+}
+.service__media img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 64rem){
+  .service__card{
+    grid-template-columns: 1fr;
+  }
+  .service__text{
+    padding: 2.4rem 2rem 2rem;
+  }
+  .service__actions{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 42rem){
+  .services__title{ font-size: clamp(3.2rem, 9vw, 5.6rem); }
+  .service__eyebrow{ font-size: clamp(2.6rem, 7vw, 3.8rem); }
+  .service__text p, .service__list{ font-size: 1.55rem; }
+}
+
+.service__media img{
+  width: 85%;      /* la haces más chica (ajusta el % a tu gusto) */
+  margin: 0 auto;  /* centra la imagen en su columna */
+  display: block;
+}
+
+.service__media{
+  padding: 2rem;   /* crea espacio entre la foto y la línea gris */
+  box-sizing: border-box;
+}
+
+.service__media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: .4rem; /* opcional: esquinas suaves */
+}
+
+.service__card{
+  max-width: 100rem;   /* 👈 ancho máximo de la carta */
+  margin: 0 auto;      /* 👈 la centra dentro del container */
+}
+
+.service__eyebrow{
+  font-weight: 400;
+  font-size: clamp(3rem, 4.2vw, 4.6rem);
+  line-height: 1.1;
+  margin: 0 0 1.8rem;
+  color: var(--color-dark);
+  white-space: nowrap;   /* 👈 evita saltos de línea */
+}
+
+.service__media{
+  display: flex;
+  align-items: center;   /* centra verticalmente */
+  justify-content: center; /* centra horizontalmente */
+  padding: 2rem;         /* deja aire respecto al borde gris */
+  box-sizing: border-box;
+}
+
+.service__media img{
+  width: 120%;      /* 👈 la forzamos a ser más grande que su columna */
+  max-width: none;  /* desactiva el límite */
+  margin-left: -10%;/* 👈 centrado (ajusta el % según quieras que “salga”) */
+  height: auto;
+  display: block;
+  
+}
+
+.service{
+  margin-bottom: 2rem;  /* 👈 más espacio entre cartas */
+}
+
+.service:last-child{
+  margin-bottom: 0;     /* no deja espacio extra al final */
+}
+
+.service__text{
+  display: flex;
+  flex-direction: column;
+  height: 80%;      /* asegura que ocupe toda la altura de la tarjeta */
+}
+
+.service__actions{
+  margin-top: auto;  /* 👈 empuja los botones hacia abajo */
+  display: flex;
+  gap: 1.2rem;
+}
+
+.service__text{
+  display: flex;
+  flex-direction: column;
+  height: 100%;      /* asegura que ocupe toda la altura de la tarjeta */
+}
+
+.service__actions{
+  margin-top: auto;       /* mantiene el botón abajo */
+  margin-bottom: 8rem;    /* 👈 separa del borde gris */
+  display: flex;
+  gap: 1.2rem;
+}
+
+
+/* ===== SOLO TEXTO EN MÓVIL ===== */
+@media (max-width: 40rem){   /* ≤ 640px */
+  .service__media{
+    display: none;   /* oculta las imágenes */
+  }
+  .service__card{
+    grid-template-columns: 1fr; /* solo queda el texto */
+  }
+}
+
+/* === Ajuste Mobile: que todo entre en la carta === */
+@media (max-width: 40rem){   /* ≤ 640px */
+  .service__card{
+    padding: 1.2rem;          /* crea aire entre contenido y borde */
+    box-sizing: border-box;
+  }
+
+  .service__text{
+    padding: 1.6rem 1.2rem;   /* menos padding lateral */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service__eyebrow{
+    font-size: 6rem !important; /* título más compacto */
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    white-space: normal;      /* permite salto de línea */
+    word-break: break-word;   /* corta palabras largas si es necesario */
+  }
+
+  .service__text p,
+  .service__list{
+    font-size: 1.45rem;
+    line-height: 1.6;
+  }
+
+  .service__actions{
+    margin-top: 1.6rem;
+    margin-bottom: .8rem;     /* botones justo antes de la línea gris */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .service__btn{
+    flex: 1 1 auto;
+    font-size: 1.4rem;
+    padding: .9rem 1.2rem;
+    text-align: center;
+    max-width: 48%;           /* evita que se salgan */
+  }
+}
+
+/* === Servicios más chicos en móviles === */
+@media (max-width: 40rem){   /* ≤ 640px */
+  .service__card{
+    padding: 0.8rem;           /* menos espacio interno */
+    border-width: 0.6rem;      /* marco blanco más fino */
+  }
+  .service__card::before{
+    inset: 0.6rem;             /* línea gris más cerca */
+  }
+
+  .service__text{
+    padding: 1.2rem 1rem;      /* reduce espacio del texto */
+  }
+
+  .service__eyebrow{
+    font-size: clamp(1.6rem, 5vw, 2rem); /* título más chico */
+    margin-bottom: 0.8rem;
+  }
+
+  .service__text p,
+  .service__list{
+    font-size: 1.3rem;   /* texto más chico */
+    line-height: 1.5;
+  }
+
+  .service__actions{
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+    gap: 0.6rem;
+  }
+  .service__btn{
+    font-size: 1.2rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* ===== Quote Final de Sección ===== */
+.quote{
+  padding: 5rem 2rem;
+  text-align: center;
+
+}
+
+.quote blockquote{
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.quote p{
+  font-size: 4rem;
+  line-height: 1.7;
+  font-style: italic;
+  color: var(--color-dark);
+  margin-bottom: 2rem;
+}
+
+.quote cite{
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-dark);
+  display: block;
+}
