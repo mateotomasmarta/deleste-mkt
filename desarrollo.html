@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>Document</title>
+    
+</head>
+<body>
+    <header class="topbar">
+        <div class="container">
+          <nav class="nav">
+            <ul class="nav__list nav__list--left">
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#nosotros">Nosotros</a></li>
+            </ul>
+      
+            <!-- Logo centrado -->
+            <a href="#inicio" class="brand" aria-label="Del Este Marketing">
+              <img src="assets/img/logo.webp" alt="Del Este Marketing" class="brand__img" />
+            </a>
+      
+            <ul class="nav__list nav__list--right">
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#contacto" class="btn btn--primary">Contacto</a></li>
+            </ul>
+            <!-- Botón hamburguesa (visible solo en móvil) -->
+            <button class="nav__toggle" aria-label="Abrir menú" aria-controls="nav-drawer" aria-expanded="false">
+              <span class="nav__bar"></span>
+              <span class="nav__bar"></span>
+              <span class="nav__bar"></span>
+            </button>
+
+            <!-- Drawer móvil con los enlaces -->
+            <div id="nav-drawer" class="nav__drawer" role="dialog" aria-modal="true">
+              <button class="nav__close" aria-label="Cerrar menú">&times;</button>
+              <ul class="nav__drawer-list">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#contacto" class="btn btn--primary">Contacto</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+    </header>
+
+    <main>
+      <!-- ================= Como es trabajar con nosotros ================= -->
+      <section id="trabajar" class="workwithus">
+        <div class="container workwithus__content">
+          <h2 class="signature">Como es trabajar con nosotros</h2>
+          <p class="workwithus__desc">
+            Construimos sitios web funcionales, atractivos y adaptados a tu negocio, enfocados en experiencia de usuario y resultados.
+          </p>
+        </div>
+      </section>
+
+      <section id="proceso" class="process process--tight">
+        <div class="container process__wrap">
+          <!-- COLUMNA IZQUIERDA -->
+          <div class="process__col process__col--left">
+            <div class="process__block">
+              <p>
+                Diseñamos páginas web corporativas y landing pages optimizadas que transmiten confianza y convierten visitantes en clientes.
+              </p>
+              <p>
+                Creamos e-commerce intuitivos, con sistemas seguros de pago y gestión fácil para tu negocio online.
+              </p>
+              <p>
+                Desarrollamos sistemas y páginas personalizadas que se adaptan a tus objetivos, necesidades específicas y visión empresarial.
+              </p>
+            </div>
+      
+            <div class="process__block step step--2">
+              <h3 class="process__eyebrow">PASO 2: diseñaremos la propuesta visual de tu sitio web.</h3>
+              <div class="process__media">
+                <img src="assets/img/desarrollo-2.webp" alt="Identidad en redes">
+              </div>
+            </div>
+      
+            <div class="process__block step step--5">
+              <h3 class="process__eyebrow">PASO 5: ENTREGA OFICIAL</h3>
+              <p class="signature process__signature">
+                Tu web funcionando, lista para crecer junto a tu negocio
+              </p>
+            </div>
+          </div>
+      
+          <!-- LÍNEA CENTRAL -->
+          <div class="process__divider" aria-hidden="true">
+          </div>
+      
+          <!-- COLUMNA DERECHA -->
+          <div class="process__col process__col--right">
+            <div class="process__block step step--1">
+              <h3 class="process__eyebrow">
+                PASO 1: REUNIÓN INICIAL PARA CONOCER TUS OBJETIVOS Y NECESIDADES
+              </h3>
+              <div class="process__media">
+                <img src="assets/img/desarrollo-1.webp" alt="Reunión inicial">
+              </div>
+            </div>
+      
+            <div class="process__block step step--3">
+              <h3 class="process__eyebrow">PASO 3: CONSTRUIMOS TU PÁGINA.</h3>
+              <p class="signature process__signature">
+                Un sitio pensado para impactar y atraer más clientes
+              </p>
+            </div>
+      
+            <div class="process__block step step--4">
+              <h3 class="process__eyebrow">
+                PASO 4: PRESENTAMOS EL DISEÑO FINAL PARA TU APROBACIÓN Y AJUSTES.
+              </h3>
+              <div class="process__media">
+                <img src="assets/img/desarrollo-3.webp" alt="Diseño final y ajustes">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+          
+    </main>
+    
+    <script>
+      // Lee el número de "PASO X" y lo usa para ordenar y para el badge
+      document.querySelectorAll('#proceso .process__block').forEach((b)=>{
+        const t = b.querySelector('.process__eyebrow')?.textContent || '';
+        const m = t.match(/PASO\s*(\d+)/i);
+        if(!m) return;
+        const n = parseInt(m[1], 10);
+        // Badge visible en ::before
+        b.setAttribute('data-step', n);
+        // Orden solo en móvil (flex-orden)
+        b.style.setProperty('order', n);
+      });
+    </script>
+    <script>
+      // Ordena en mobile: PASO X según número; intro al principio
+      document.querySelectorAll('#proceso .process__block').forEach((b)=>{
+        const t = b.querySelector('.process__eyebrow')?.textContent || '';
+        const m = t.match(/PASO\s*(\d+)/i);
+        if (m) {
+          const n = parseInt(m[1], 10);
+          b.classList.add('step');
+          b.setAttribute('data-step', n);     // para el badge
+          b.style.setProperty('order', n);    // 1..5 en móvil
+        } else {
+          // Intro (no es "PASO X"): va primero en móvil
+          b.style.setProperty('order', -1);
+          b.removeAttribute('data-step');     // sin badge
+        }
+      });
+    </script>
+    
+
+    
+</body>
+</html>
