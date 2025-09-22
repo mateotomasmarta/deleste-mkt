@@ -1108,6 +1108,8 @@ p {
   margin-bottom: 2rem;
 }
 
+
+
 .quote cite{
   font-size: 1.6rem;
   font-weight: 600;
@@ -2365,6 +2367,54 @@ body.light .mkt-footer{
   display: none;
 }
 
+/* ===== Quote: texto más chico en móviles ===== */
+@media (max-width:40rem){
+  .quote p{
+    font-size: 2.5rem;    /* ajusta a tu gusto (0.8–1rem) */
+    line-height: 1.4;     /* opcional: mantiene buena legibilidad */
+  }
+
+  .quote cite{
+    font-size: 1.8rem;    /* tamaño un poco menor para la cita */
+  }
+}
+
+/* ===== Hero: texto más chico en pantallas móviles ===== */
+@media (max-width:40rem){
+
+  /* Si tu hero tiene un título/heading */
+  .hero h1,
+  .hero h2,
+  .hero__headline {
+    font-size: 1.4rem !important;       /* ajustá según tu gusto (1.2–1.6 rem) */
+    line-height: 1.3;       /* mejor legibilidad en pantallas chicas */
+  }
+
+  /* Si hay subtítulo o párrafo */
+  .hero p,
+  .hero__desc {
+    font-size: 0.9rem;      /* un poco más pequeño que el texto normal */
+    line-height: 1.4;
+  }
+}
 
 
-
+/* ===== Identidad (frases del "hero") más chicas en móviles ===== */
+@media (max-width:40rem){
+  .identity__eyebrow.signature{
+    font-size: 5rem !important;
+  }
+  .identity__headline{
+    font-size: 1.4rem !important;   /* ~22px aprox */
+    line-height: 1.25 !important;
+    letter-spacing: 0 !important;
+  }
+  .identity__desc{
+    font-size: 1.5rem !important;   /* ~15px */
+    line-height: 1.5 !important;
+  }
+  .identity__cta{
+    font-size: 0.95rem !important;
+    padding: .7rem 1rem !important;
+  }
+}
