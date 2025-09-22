@@ -2297,234 +2297,66 @@ body.light .mkt-footer{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* === 1ª carta: imagen a ancho completo en móvil con zoom === */
+/* ===== Servicios: versión móvil unificada para TODAS las cartas ===== */
 @media (max-width:40rem){
-  .services .service:first-of-type .service__media{
-    display: block !important;
+
+  /* La card se apila en columna (imagen arriba, texto abajo) */
+  .services .service .service__card{
+    display: flex !important;
+    flex-direction: column !important;
+    border: none !important;         /* sin línea gris */
+    box-shadow: none !important;
+  }
+
+  /* Imagen visible en móvil (anula cualquier display:none previo) */
+  .services .service .service__media{
+    order: -1;                        /* imagen arriba */
+    display: block !important;        /* asegurar visibilidad */
     width: 100% !important;
-    padding: 0 !important;          /* quita padding lateral */
-  }
-
-  .services .service:first-of-type .service__media img{
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;   /* recorta sin deformar */
-    object-position: center;        /* centra el recorte */
-    transform: scale(1.15);         /* 👈 zoom suave */
-  }
-}
-
-
-/* === 1ª carta: contenedor ancho completo, imagen más chica y centrada === */
-@media (max-width:40rem){
-  .services .service:first-of-type .service__media{
-    display: flex !important;         /* flex para centrar */
-    justify-content: center;          /* centra horizontalmente */
-    align-items: center;
-    width: 100% !important;           /* el contenedor ocupa todo el ancho de la carta */
-    margin: 0 auto !important;
-    padding: 0 !important;
-  }
-
-  .services .service:first-of-type .service__media img{
-    width: 80% !important;            /* tamaño visual de la foto (ajusta % o px) */
-    max-width: 320px;                 /* opcional tope máximo */
-    height: auto !important;
-    object-fit: cover !important;
-    object-position: center;
-    display: block;
-  }
-}
-
-
-
-/* === 1ª carta: imagen ocupa todo el ancho en móvil === */
-@media (max-width:40rem){
-  /* La card completa pasa a una sola columna */
-  .services .service:first-of-type .service__card{
-    display: block !important;
-  }
-
-  /* Contenedor de la imagen: ancho total y sin padding extra */
-  .services .service:first-of-type .service__media{
-    display: block !important;
-    width: 100% !important;
+    height: 280px;                    /* alto del banner (ajustable) */
     margin: 0 !important;
     padding: 0 !important;
-  }
-
-  /* Imagen: llena todo el ancho de la card */
-  .services .service:first-of-type .service__media img{
-    width: 140% !important;
-    height: auto !important;
-    object-fit: cover !important;
-    object-position: center center;
-  }
-}
-
-
-/* === 1ª carta (Asesoría en Marketing) — imagen a TODO el ancho en móvil === */
-@media (max-width:40rem){
-
-  /* La card pasa a bloque (sin grid) para que nada le “robe” ancho */
-  .services .service:first-of-type .service__card{
-    display: block !important;
-  }
-
-  /* Contenedor de la imagen: sin paddings ni márgenes y ocupando 100% */
-  .services .service:first-of-type .service__media{
-    display: block !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    position: relative;               /* para el degradé */
+    overflow: hidden;                 /* recorte limpio */
     box-sizing: border-box !important;
   }
 
-  /* Imagen: que llene el ancho, sin desplazamientos ni zoom heredados */
-  .services .service:first-of-type .service__media img{
-    width: 100% !important;
-    height: auto !important;
-    max-width: none !important;
-    margin: 0 !important;
-    transform: none !important;         /* anula el scale(1.15) de desktop */
-    object-fit: cover !important;       /* recorta sin deformar si hace falta */
-    object-position: center center;
-    display: block;
-  }
-}
-
-/* === 1ª carta: imagen full-width pero con altura recortada en móvil === */
-@media (max-width:40rem){
-
-  /* La card sigue en una sola columna */
-  .services .service:first-of-type .service__card{
-    display: block !important;
-  }
-
-  /* Contenedor de la imagen: ancho total y altura controlada */
-  .services .service:first-of-type .service__media{
-    display: block !important;
-    width: 100% !important;
-    height: 180px;              /* 👈 altura que recorta (ajustá a gusto) */
-    overflow: hidden;           /* oculta el exceso */
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Imagen: llena el contenedor y se recorta sin deformarse */
-  .services .service:first-of-type .service__media img{
-    width: 100% !important;
-    height: 100% !important;    /* fuerza a cubrir la altura del contenedor */
-    object-fit: cover !important;
-    object-position: center;    /* centra el recorte */
-    margin: 0;
-    display: block;
-    border-radius: 0px;
-  }
-}
-
-/* === 1ª carta: imagen arriba del texto en móvil === */
-@media (max-width:40rem){
-  /* La tarjeta se comporta en columna para poder reordenar */
-  .services .service:first-of-type .service__card{
-    display: flex !important;
-    flex-direction: column !important; /* asegura una sola columna */
-  }
-
-  /* Mueve la imagen al principio */
-  .services .service:first-of-type .service__media{
-    order: -1;      /* 👈 coloca la imagen antes del texto */
-    width: 100% !important;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Ajustes de la imagen para que siga recortada y a todo el ancho */
-  .services .service:first-of-type .service__media img{
-    width: 100% !important;
-    height: 180px;              /* o la altura que elegiste para el recorte */
-    object-fit: cover !important;
-    object-position: center;
-    display: block;
-  }
-}
-
-/* === 1ª carta: imagen arriba del texto en móvil, más visible === */
-@media (max-width:40rem){
-  .services .service:first-of-type .service__card{
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .services .service:first-of-type .service__media{
-    order: -1;
-    width: 100% !important;
-    margin: 0;
-    padding: 0;
-    height: 280px;             /* 👈 Aumentá la altura (antes era 180px) */
-    overflow: hidden;          /* recorta el exceso */
-  }
-
-  .services .service:first-of-type .service__media img{
+  /* La imagen llena el contenedor y se recorta sin deformar */
+  .services .service .service__media img{
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
     object-position: center;
     display: block;
-  }
-}
-
-/* === 1ª carta: degradé blanco sobre la imagen en móvil === */
-@media (max-width:40rem){
-  .services .service:first-of-type .service__media{
-    position: relative;            /* necesario para posicionar el ::after */
-    overflow: hidden;              /* oculta el gradiente fuera de la caja */
+    margin: 0 !important;
+    transform: none !important;       /* sin zoom heredado */
+    max-width: none !important;
+    border-radius: 0 !important;
   }
 
-  .services .service:first-of-type .service__media::after{
+  /* Degradé blanco inferior como overlay */
+  .services .service .service__media::after{
     content: "";
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 40%;                   /* altura del degradé (ajustá a gusto) */
+    height: 40%;                       /* cuánto ocupa el degradé */
     background: linear-gradient(
       to bottom,
-      rgba(255,255,255,0) 0%,       /* transparente en la parte superior */
-      rgba(255,255,255,0.9) 100%    /* blanco casi sólido al final */
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.9) 100%
     );
-    pointer-events: none;           /* no bloquea clics */
+    pointer-events: none;
+  }
+
+  /* Quitar divisores dentro de las tarjetas en móvil */
+  .services .service .service__divider{
+    display: none !important;
   }
 }
 
+/* ===== Opcional (global, por si querés sin líneas en desktop también) ===== */
 .service__card{
   border: none;
   box-shadow: none;
@@ -2532,10 +2364,6 @@ body.light .mkt-footer{
 .service__divider{
   display: none;
 }
-
-
-
-
 
 
 
