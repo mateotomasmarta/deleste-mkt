@@ -2670,3 +2670,22 @@ body.light .mkt-footer{
     font-size: clamp(1.6rem, 4.5vw, 2.4rem); /* reduce la letra si es necesario */
   }
 }
+
+/* Degradé global de fondo en toda la página */
+.identity,
+.about,
+.services,
+.quote,
+.contact,
+.mkt-footer {
+  background: transparent !important;
+}
+
+/* Degradé global de fondo en toda la página */
+html, body {
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    #ffffff 100%
+  );
+}
