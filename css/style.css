@@ -2750,37 +2750,35 @@ body.light .mkt-footer{
 /* ==== Fondos individuales por sección (forzado) ==== */
 
 /* Hero */
+/* ===== Fondos individuales, de más oscuro a más claro (no blanco) ===== */
+
 .hero {
-  background: linear-gradient(180deg, var(--color-bg) 0%, #ffffff 100%) !important;
+  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
 
-/* Identidad */
 .identity {
-  background: linear-gradient(180deg, #ece9e2 0%, #ffffff 100%) !important;
+  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
 
-/* Quiénes Somos */
 .about {
-  background: linear-gradient(180deg, #e8e6df 0%, #ffffff 100%) !important;
+  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
 
-/* Servicios */
 .services {
-  background: linear-gradient(180deg, #f0eee8 0%, #ffffff 100%) !important;
+  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
 
-/* Frase / Quote */
 .quote {
-  background: linear-gradient(180deg, #f5f2ec 0%, #ffffff 100%) !important;
+  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
 
-/* Pilares mantiene su verde */
+/* Pilares conserva su verde */
 .pillars {
   background: #0f1f1a !important;
 }
 
-/* Contacto */
 .contact {
-  background: linear-gradient(180deg, #ece9e2 0%, #ffffff 100%) !important;
+  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
+
 
