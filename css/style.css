@@ -1023,7 +1023,7 @@ p {
   }
 
   .service__eyebrow{
-    font-size: 6rem !important; /* título más compacto */
+    font-size: 5rem !important; /* título más compacto */
     line-height: 1.2;
     margin-bottom: 1.2rem;
     white-space: normal;      /* permite salto de línea */
@@ -2405,7 +2405,7 @@ body.light .mkt-footer{
     font-size: 5rem !important;
   }
   .identity__headline{
-    font-size: 1.4rem !important;   /* ~22px aprox */
+    font-size: 1.35rem !important;   /* ~22px aprox */
     line-height: 1.25 !important;
     letter-spacing: 0 !important;
   }
@@ -2416,5 +2416,257 @@ body.light .mkt-footer{
   .identity__cta{
     font-size: 0.95rem !important;
     padding: .7rem 1rem !important;
+  }
+}
+
+/* ===== Desactivar subrayado/animación del logo en móviles ===== */
+@media (max-width:40rem){
+  /* Quita cualquier borde, sombra o underline del link del logo */
+  .brand,
+  .brand:link,
+  .brand:visited,
+  .brand:hover,
+  .brand:focus {
+    text-decoration: none !important;
+    background-image: none !important;   /* por si usa gradient underline */
+    box-shadow: none !important;
+    border: none !important;
+    transition: none !important;
+  }
+
+  /* Si hay pseudo-elementos usados para la animación, los anulamos */
+  .brand::before,
+  .brand::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+/* Galería de 5 cartas en una sola fila (desktop) */
+.pillars__gallery{
+  margin: 3.6rem auto 4.2rem;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* ← antes: repeat(4, 1fr) */
+  gap: 2.4rem;                                      /* un poco menos de separación */
+  max-width: 180rem;                                 /* podés subir a 150–160rem si querés más aire */
+}
+
+/* ===== Pillars gallery visible y tipo carrusel en móviles ===== */
+@media (max-width:40rem){
+
+  /* mostrar la galería (pisa cualquier display:none previo) */
+  .pillars__gallery{
+    display: flex !important;
+    gap: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding: 0 1rem;
+    width: 100%;
+    min-height: 1px;           /* evita colapso de altura */
+  }
+
+  /* cada phone-card actúa como slide centrado */
+  .pillars__gallery .phone-card{
+    flex: 0 0 80%;             /* ancho de cada slide (ajusta 70–90%) */
+    scroll-snap-align: center;
+  }
+
+  /* imágenes seguras */
+  .pillars__gallery .phone-card img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* aseguro que los puntitos se vean en móvil */
+  .pillars__dots{
+    display: flex !important;
+    justify-content: center;
+    gap: .5rem;
+    padding: .75rem 0 0;
+  }
+  .pillars__dots > *{
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,.45);
+  }
+  .pillars__dots [aria-current="true"]{
+    background: #fff;
+  }
+}
+
+/* === Pillars: acercar los puntitos al carrusel en móvil === */
+@media (max-width:40rem){
+  .pillars__dots{
+    margin-top: -1rem !important;   /* antes seguro era ~2rem o más */
+    padding-top: 0 !important;
+  }
+
+  /* opcional: reducir el espacio inferior del carrusel si hay padding */
+  .pillars__gallery{
+    margin-bottom: 0.5rem !important;
+  }
+}
+
+/* === Pillars: puntitos justo debajo de las imágenes en móvil === */
+@media (max-width:40rem){
+  /* elimina margen/padding extra del carrusel */
+  .pillars__gallery{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* coloca los dots inmediatamente después de las cards */
+  .pillars__dots{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;   /* asegura que quede en el flujo normal */
+  }
+}
+
+.pillars__dots{ margin-top: -0.25rem !important; }
+
+/* === Pillars (móvil): dots pegados a las imágenes === */
+@media (max-width:40rem){
+  /* Quita márgenes/padding del carrusel */
+  .pillars__gallery{
+    margin: 0 !important;
+    padding: 0 1rem 0 1rem !important; /* solo laterales */
+    display: flex !important;          /* nos aseguramos del layout */
+    gap: 1rem;                          /* horizontal */
+  }
+
+  /* Quita el margen por defecto del <figure> */
+  .pillars__gallery .phone-card{
+    margin: 0 !important;
+  }
+
+  /* Por si la imagen dejaba “línea” debajo */
+  .pillars__gallery .phone-card img{
+    display: block !important;
+  }
+
+  /* Dots: sin margen y subidos visualmente */
+  .pillars__dots{
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    top: -10px;                         /* súbelo; ajustá -6px/-12px a gusto */
+  }
+}
+
+/* === Pillars móvil: dots pegados a la galería === */
+@media (max-width:40rem){
+  /* eliminar cualquier espacio extra debajo de la galería */
+  .pillars__gallery{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* el contenedor de los dots sin margen/padding */
+  .pillars__dots{
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+  }
+
+  /* asegurar que los dots queden justo después de las cards */
+  .pillars{
+    display: flex;
+    flex-direction: column;
+  }
+  .pillars__dots{
+    order: 2; /* inmediatamente tras la galería (que es order:1 por defecto) */
+  }
+}
+
+/* === Más espacio antes de las phone-cards en móvil === */
+@media (max-width:40rem){
+  /* Opción A: margen superior en la galería misma */
+  .pillars__gallery{
+    margin-top: 10rem !important;   /* ajustá a 3rem si querés más */
+  }
+
+  /* Opción B (alternativa): margen superior a toda la sección */
+  /* .pillars{
+       padding-top: 2.5rem !important;
+  } */
+}
+
+/* === Pillars: subir los dots en móviles === */
+@media (max-width:40rem){
+  .pillars__dots{
+    margin-top: -10rem !important;   /* sube ~24 px, ajustá a gusto */
+    position: relative !important;
+  }
+}
+
+/* === Pillars: dots superpuestos a las phone-cards en móviles === */
+@media (max-width:40rem){
+  /* referencia para el posicionamiento */
+  .pillars{
+    position: relative;
+  }
+
+  /* superpone los dots encima de la galería */
+  .pillars__dots{
+    position: absolute !important;
+    bottom: 1rem;                /* distancia desde la parte inferior de las phone-cards */
+    left: 50%;
+    transform: translateX(-50%); /* centrado horizontal */
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 5;                  /* asegura que queden por encima */
+  }
+}
+
+/* === Pillars: dots justo debajo de la imagen en móvil === */
+@media (max-width:40rem){
+  /* Asegura que la galería no deje espacio extra */
+  .pillars__gallery{
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Dots pegados al final de la phone-card */
+  .pillars__dots{
+    position: relative !important;  /* vuelve al flujo normal */
+    margin-top: 0.25rem !important; /* un pequeño respiro de 4px */
+    padding-top: 0 !important;
+  }
+}
+
+/* === Pillars móvil: dots justo debajo de la imagen (parche final) === */
+@media (max-width: 520px){
+  /* quita el margen grande que queda de desktop */
+  .pillars__gallery{
+    margin: 0 !important;                 /* elimina el 4.2rem de abajo */
+    padding: 0 1rem !important;           /* solo laterales */
+    gap: 1.2rem !important;
+  }
+  /* por si <figure> trae margen del user agent */
+  .pillars__gallery .phone-card{
+    margin: 0 !important;
+  }
+
+  /* dots pegados a la galería */
+  .pillars__dots{
+    position: relative !important;
+    margin-top: 0.25rem !important;       /* 0 si los querés totalmente pegados */
+    padding-top: 0 !important;
+  }
+}
+
+/* Quitar el redondel numerado de cada paso */
+.step::before {
+  content: none !important;
+}
+
+/* Evitar salto de línea en títulos de servicios en móviles */
+@media (max-width: 640px) {
+  .service__eyebrow {
+    white-space: nowrap;       /* evita que el texto se corte */
+    font-size: clamp(1.6rem, 4.5vw, 2.4rem); /* reduce la letra si es necesario */
   }
 }
