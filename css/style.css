@@ -2752,13 +2752,36 @@ body.light .mkt-footer{
 /* Hero */
 /* ===== Fondos individuales, de más oscuro a más claro (no blanco) ===== */
 
+/* ===== Fondo para la sección HERO ===== */
+/* ===== HERO con degradado estilo Canva ===== */
 .hero {
-  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 233, 226, 1) 0%,      /* #ece9e2 100% opacidad */
+    rgba(236, 233, 226, 0.95) 40%,  /* un poco translúcido */
+    rgba(236, 233, 226, 0.90) 70%,  /* más claro */
+    rgba(236, 233, 226, 0.85) 100%  /* final más claro pero no blanco */
+  ) !important;
+
+  /* elimina imagen si aún existe */
+  background-image: none !important;
 }
 
+
+/* ===== HERO con degradado estilo Canva ===== */
 .identity {
-  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 233, 226, 1) 0%,      /* #ece9e2 100% opacidad */
+    rgba(236, 233, 226, 0.95) 40%,  /* un poco translúcido */
+    rgba(236, 233, 226, 0.90) 70%,  /* más claro */
+    rgba(236, 233, 226, 0.85) 100%  /* final más claro pero no blanco */
+  ) !important;
+
+  /* elimina imagen si aún existe */
+  background-image: none !important;
 }
+
 
 .about {
   background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
@@ -2768,17 +2791,39 @@ body.light .mkt-footer{
   background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
 }
 
+/* ===== HERO con degradado estilo Canva ===== */
 .quote {
-  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 233, 226, 1) 0%,      /* #ece9e2 100% opacidad */
+    rgba(236, 233, 226, 0.95) 40%,  /* un poco translúcido */
+    rgba(236, 233, 226, 0.90) 70%,  /* más claro */
+    rgba(236, 233, 226, 0.85) 100%  /* final más claro pero no blanco */
+  ) !important;
+
+  /* elimina imagen si aún existe */
+  background-image: none !important;
 }
+
 
 /* Pilares conserva su verde */
 .pillars {
   background: #0f1f1a !important;
 }
 
+/* ===== HERO con degradado estilo Canva ===== */
 .contact {
-  background: linear-gradient(180deg, #d9d4c8 0%, var(--color-bg) 100%) !important;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 233, 226, 1) 0%,      /* #ece9e2 100% opacidad */
+    rgba(236, 233, 226, 0.95) 40%,  /* un poco translúcido */
+    rgba(236, 233, 226, 0.90) 70%,  /* más claro */
+    rgba(236, 233, 226, 0.85) 100%  /* final más claro pero no blanco */
+  ) !important;
+
+  /* elimina imagen si aún existe */
+  background-image: none !important;
 }
+
 
 
