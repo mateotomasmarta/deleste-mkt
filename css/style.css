@@ -945,7 +945,7 @@ p {
   line-height: 1.1;
   margin: 0 0 1.8rem;
   color: var(--color-dark);
-  white-space: nowrap;   /* 👈 evita saltos de línea */
+
 }
 
 .service__media{
@@ -2681,11 +2681,58 @@ body.light .mkt-footer{
   background: transparent !important;
 }
 
-/* Degradé global de fondo en toda la página */
-html, body {
-  background: linear-gradient(
-    to bottom,
-    var(--color-bg) 0%,
-    #ffffff 100%
-  );
+/* === Unificar imágenes de las cartas de servicio (como la 1ª) === */
+.service__media{
+  padding: 2rem;              /* mismo aire que la 1ª */
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;           /* esconde el recorte del cover */
+}
+
+.service__media img{
+  width: 100% !important;
+  height: 100% !important;    /* ocupa toda la columna */
+  object-fit: cover !important;
+  object-position: center !important;
+  max-width: none !important; /* anula límites previos */
+  margin: 0 !important;       /* quita desplazamientos tipo -10% */
+  display: block;
+}
+
+
+/* === Aumentar tamaño de las imágenes de servicio === */
+.service__media img{
+  width: 110% !important;      /* antes 100%, ahora un poco más grande */
+  height: 110% !important;     /* ocupa más alto */
+  object-fit: cover !important;
+  object-position: center !important;
+  max-width: none !important;
+  margin: 0 !important;
+  display: block;
+}
+
+/* Desplaza la imagen hacia arriba y a la derecha */
+.service__media img{
+  width: 110% !important;
+  height: 110% !important;
+  object-fit: cover !important;
+  object-position: 60% 50% !important; /* X Y  → 60% más a la derecha, 40% más arriba */
+}
+
+.service__media img{
+  width: 110% !important;
+  height: 110% !important;
+  object-fit: cover !important;
+  object-position: 60% 20% !important;  /* X Y → 20% la sube más */
+}
+
+.service__media{
+  overflow: hidden;
+}
+
+/* Sube todo el bloque de imagen dentro de la carta */
+.service__media{
+  position: relative;
+  top: -10px; 
+  right: -10px;
 }
