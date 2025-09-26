@@ -2921,3 +2921,19 @@ html, body {
     flex: 0 0 7.5%;
   }
 }
+
+
+
+@media (max-width: 520px){
+  .pillars .signature {
+  font-size: 8rem !important;       /* antes 6rem: título principal más chico */
+  }
+  .pillars__title{
+    font-size: 3rem;
+
+  }
+  .pillars__text{
+    font-size: 2rem;
+  }
+
+}
