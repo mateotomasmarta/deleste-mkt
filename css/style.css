@@ -2827,3 +2827,97 @@ body.light .mkt-footer{
 
 
 
+@media (max-width: 768px) {
+  .pillars__gallery {
+    transform: translateX(20px); /* mueve todo 20 px a la derecha */
+  }
+
+  .pillars__dots {
+    transform: translateX(20px); /* mismo desplazamiento para los puntos */
+  }
+}
+/* Subir la sección verde (pillars) en mobile */
+@media (max-width: 768px) {
+  /* reduce el aire superior interno */
+  .pillars {
+    padding-top: 16px !important;
+  }
+
+  /* por si la sección anterior deja mucho espacio debajo */
+  .quote {
+    padding-bottom: 16px !important;
+    margin-bottom: 0 !important;
+  }
+}
+
+
+/* Feed más chico */
+.pillars__gallery .phone-card {
+  width: 80%;         /* reduce el ancho total de cada tarjeta */
+  margin: 0 auto;     /* centra la tarjeta */
+}
+
+.pillars__gallery .phone-card img {
+  width: 100%;        /* la imagen sigue llenando la tarjeta */
+  height: auto;
+}
+
+.pillars__gallery .phone-card img {
+  max-width: 100%;   /* evita que se estire más que su resolución */
+  height: auto;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* para anclas con desplazamiento suave */
+}
+/* Reducir tamaño de los feeds SOLO en pantallas chicas */
+@media (max-width: 520px) {
+  .pillars__gallery .phone-card {
+    flex: 0 0 70%;      /* antes 85%, ocupa menos ancho */
+    max-width: 70%;
+  }
+
+  .pillars__gallery .phone-card img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (max-width: 520px){
+  .pillars__gallery{
+    padding-right: 15%; /* agrega espacio al final del carrusel */
+  }
+}
+
+@media (max-width: 520px){
+  .pillars__gallery .phone-card:last-child{
+    margin-right: 5%;
+  }
+}
+
+/* ===== Carrusel móvil: que el último feed no se corte ===== */
+@media (max-width: 520px){
+  .pillars__gallery{
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1.2rem;
+    padding: .5rem 0;                  /* sin padding lateral, lo daremos con los “spacers” */
+  }
+
+  /* Cada slide ocupa 85% del viewport */
+  .pillars__gallery .phone-card{
+    flex: 0 0 85%;
+    scroll-snap-align: center;         /* centrado */
+    border-radius: 1.2rem;
+    overflow: hidden;
+  }
+
+  /* Spacers: (100% - 85%) / 2 = 7.5% a ambos lados */
+  .pillars__gallery::before,
+  .pillars__gallery::after{
+    content: "";
+    flex: 0 0 7.5%;
+  }
+}
