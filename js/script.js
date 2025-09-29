@@ -217,7 +217,7 @@
 })();
 
 
-// Carrusel Testimonios: avanzar por "página"
+// Carrusel Testimonios: avanzar por "página" + autoplay en móvil
 (() => {
   const track   = document.querySelector('.testimonials__track');
   const slides  = Array.from(document.querySelectorAll('.testimonial'));
@@ -238,7 +238,6 @@
     const margin = parseFloat(cs.marginLeft) + parseFloat(cs.marginRight);
     return w + margin;
   };
-
   const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
 
   function snapToPage() {
@@ -252,15 +251,38 @@
     track.style.transform = `translateX(-${index * stepPx()}px)`;
   }
 
-  function next() { index += getVisible(); update(); }   // ← avanza de a 2 (o 1 en móvil)
+  function next() { index += getVisible(); update(); }
   function prev() { index -= getVisible(); update(); }
 
   nextBtn.addEventListener('click', next);
   prevBtn.addEventListener('click', prev);
 
-  // Recalcular al cambiar de tamaño/breakpoint
-  window.addEventListener('resize', () => { snapToPage(); update(); });
-  mq.addEventListener?.('change', () => { snapToPage(); update(); });
+  // ===== Autoplay solo en móvil =====
+  let autoId = null;
+  function nextAuto() {
+    const vis = getVisible();
+    const max = Math.max(0, slides.length - vis);
+    index = (index >= max) ? 0 : index + vis;  // loop infinito
+    update();
+  }
+  function startAutoplay() {
+    stopAutoplay();
+    if (mq.matches) autoId = setInterval(nextAuto, 7000); // 7s
+  }
+  function stopAutoplay() {
+    if (autoId) { clearInterval(autoId); autoId = null; }
+  }
 
+  // Pausar cuando la pestaña no está visible
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay(); else startAutoplay();
+  });
+
+  // Si cambia el breakpoint, reencuadrar y (re)iniciar autoplay
+  window.addEventListener('resize', () => { snapToPage(); update(); });
+  mq.addEventListener?.('change', () => { snapToPage(); update(); startAutoplay(); });
+
+  // Init
   update();
+  startAutoplay();
 })();

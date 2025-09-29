@@ -3154,3 +3154,8 @@ html, body {
   /* Oculta las esquinas decorativas para ganar aire */
   .testimonial--frame .corner{ display: none; }
 }
+
+/* Testimonios: ocultar flechas en mobile */
+@media (max-width:700px){
+  .testimonials__nav{ display: none !important; }
+}
