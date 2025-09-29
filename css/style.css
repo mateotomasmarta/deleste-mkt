@@ -2937,3 +2937,179 @@ html, body {
   }
 
 }
+
+/* ===== Testimonios ===== */
+.testimonials{
+  padding: 8rem 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,0) 70%);
+}
+
+.testimonials__title{
+  text-align: center;
+  font-weight: 400;
+  font-size: clamp(3.2rem, 5vw, 6rem);
+  margin-bottom: 5rem;
+  color: var(--color-dark);
+}
+
+.testimonials__grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: 4rem;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.testimonial{
+  position: relative;
+  background: #fff;
+  border: .2rem solid rgba(0,0,0,.1);
+  padding: 3rem 2.4rem 5rem;
+  box-shadow: 0 1.2rem 3rem rgba(0,0,0,.08);
+  text-align: center;
+  border-radius: .8rem;
+}
+
+.testimonial__quote p{
+  font-size: 1.8rem;
+  line-height: 1.6;
+  color: var(--color-dark);
+  font-style: italic;
+  margin-bottom: 2.4rem;
+}
+
+.testimonial__footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.testimonial__avatar{
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: .3rem solid #fff;
+  box-shadow: 0 0 .8rem rgba(0,0,0,.15);
+  margin-bottom: 1rem;
+}
+
+.testimonial__name{
+  font-family: var(--font-primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--color-accent);
+}
+
+/* Responsive */
+@media (max-width: 640px){
+  .testimonial__quote p{ font-size: 1.6rem; }
+}
+
+/* ===== Carrusel de Testimonios ===== */
+.testimonials {
+  padding: 8rem 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,0) 70%);
+  position: relative;
+}
+
+.testimonials__title {
+  text-align: center;
+  font-weight: 400;
+  font-size: clamp(3.2rem, 5vw, 6rem);
+  margin-bottom: 4rem;
+  color: var(--color-dark);
+}
+
+.testimonials__carousel {
+  overflow: hidden;
+  max-width: 100rem;
+  margin: 0 auto;
+}
+
+.testimonials__track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.testimonial {
+  flex: 0 0 50%;       /* 2 testimonios visibles */
+  box-sizing: border-box;
+  padding: 3rem 2.4rem;
+  background: #fff;
+  border: .2rem solid rgba(0,0,0,.1);
+  box-shadow: 0 1.2rem 3rem rgba(0,0,0,.08);
+  text-align: center;
+  border-radius: .8rem;
+  margin: 0 1rem;
+}
+
+.testimonial__quote p {
+  font-size: 1.8rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--color-dark);
+  margin-bottom: 1.6rem;
+}
+
+.testimonial__name {
+  display: block;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--color-accent);
+}
+
+/* Navegación */
+.testimonials__nav {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.testimonials__nav button {
+  background: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: background .3s;
+}
+.testimonials__nav button:hover {
+  background: #0d2412;
+}
+
+/* Responsive: en móvil mostramos solo 1 */
+@media (max-width: 700px){
+  .testimonial { flex: 0 0 100%; }
+}
+
+/* ===== Ajuste tamaño de las cartas de testimonios ===== */
+.testimonial {
+  flex: 0 0 48%;      /* antes 50% → ahora más angostas: entran 2 y sobra espacio */
+  padding: 2rem 1.6rem;  /* menos relleno interno */
+  margin: 0 0.8rem;      /* menor separación lateral */
+}
+
+/* Texto un poco más pequeño para acompañar */
+.testimonial__quote p {
+  font-size: 1.6rem;   /* antes 1.8rem */
+  line-height: 1.5;
+}
+
+.testimonial__name {
+  font-size: 1.4rem;   /* antes 1.6rem */
+}
+
+/* Quitar sombra de las cartas de testimonios */
+.testimonial {
+  box-shadow: none !important;
+}
+

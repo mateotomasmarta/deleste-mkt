@@ -215,3 +215,52 @@
   if (mql.addEventListener) mql.addEventListener("change", handleMQ);
   else mql.addListener(handleMQ); // Safari viejo
 })();
+
+
+// Carrusel Testimonios: avanzar por "página"
+(() => {
+  const track   = document.querySelector('.testimonials__track');
+  const slides  = Array.from(document.querySelectorAll('.testimonial'));
+  const prevBtn = document.querySelector('.testimonials__prev');
+  const nextBtn = document.querySelector('.testimonials__next');
+  if (!track || !slides.length || !prevBtn || !nextBtn) return;
+
+  // 2 visibles en desktop, 1 en móvil
+  const mq = window.matchMedia('(max-width:700px)');
+  const getVisible = () => (mq.matches ? 1 : 2);
+
+  let index = 0;
+
+  // ancho real del slide + márgenes
+  const stepPx = () => {
+    const w  = slides[0].getBoundingClientRect().width;
+    const cs = getComputedStyle(slides[0]);
+    const margin = parseFloat(cs.marginLeft) + parseFloat(cs.marginRight);
+    return w + margin;
+  };
+
+  const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
+
+  function snapToPage() {
+    const vis = getVisible();
+    index = Math.floor(index / vis) * vis;  // alinea al inicio de la "página"
+  }
+
+  function update() {
+    const max = Math.max(0, slides.length - getVisible());
+    index = clamp(index, 0, max);
+    track.style.transform = `translateX(-${index * stepPx()}px)`;
+  }
+
+  function next() { index += getVisible(); update(); }   // ← avanza de a 2 (o 1 en móvil)
+  function prev() { index -= getVisible(); update(); }
+
+  nextBtn.addEventListener('click', next);
+  prevBtn.addEventListener('click', prev);
+
+  // Recalcular al cambiar de tamaño/breakpoint
+  window.addEventListener('resize', () => { snapToPage(); update(); });
+  mq.addEventListener?.('change', () => { snapToPage(); update(); });
+
+  update();
+})();
