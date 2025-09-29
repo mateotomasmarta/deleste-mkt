@@ -3113,3 +3113,44 @@ html, body {
   box-shadow: none !important;
 }
 
+/* ====== TABLET (opcional, suave) ====== */
+@media (max-width: 900px){
+  .testimonials{ padding: 6rem 0; }
+}
+
+/* ====== MÓVIL (≤700px): 1 tarjeta por vista + título legible ====== */
+@media (max-width: 700px){
+  /* Título de la sección */
+  .testimonials__title.signature{
+    font-size: clamp(2.8rem, 8.5vw, 4.4rem) !important;
+    line-height: 1.06;
+    margin-bottom: 2rem;
+  }
+
+  /* Una sola card por “página” (pisa el 48% que viene después en tu CSS) */
+  .testimonial{
+    flex: 0 0 100% !important;
+    margin: 0 .8rem;
+    padding: 2rem 1.6rem;
+  }
+
+  /* Tipos un poco más chicos en móvil */
+  .testimonial__quote p{ font-size: 1.55rem; line-height: 1.55; }
+  .testimonial__name{ font-size: 1.35rem; }
+
+  /* Botones de navegación más chicos */
+  .testimonials__nav{ gap: .8rem; margin-top: 1.4rem; }
+  .testimonials__nav button{ width: 3.4rem; height: 3.4rem; font-size: 1.6rem; }
+}
+
+/* ====== TELÉFONOS PEQUEÑOS (≤520px): ajuste fino ====== */
+@media (max-width: 520px){
+  .testimonials{ padding: 4.8rem 0; }
+
+  .testimonials__title.signature{
+    font-size: clamp(2.4rem, 9.5vw, 3.8rem) !important;
+  }
+
+  /* Oculta las esquinas decorativas para ganar aire */
+  .testimonial--frame .corner{ display: none; }
+}
