@@ -3148,7 +3148,7 @@ html, body {
   .testimonials{ padding: 4.8rem 0; }
 
   .testimonials__title.signature{
-    font-size: 4.5rem !important;
+    font-size: 6rem !important;
   }
 
   /* Oculta las esquinas decorativas para ganar aire */
@@ -3158,4 +3158,23 @@ html, body {
 /* Testimonios: ocultar flechas en mobile */
 @media (max-width:700px){
   .testimonials__nav{ display: none !important; }
+}
+
+.about {
+  padding: 8rem 0 6rem;
+  background: linear-gradient(
+    90deg,
+    rgba(236, 233, 226, 0) 0%,
+    rgba(236, 233, 226, 0.5) 50%,
+    rgba(236, 233, 226, 1) 100%
+  ) !important;
+}
+
+.services, .testimonials, .quote {
+  background: linear-gradient(
+    90deg,
+    rgba(236, 233, 226, 0) 0%,
+    rgba(236, 233, 226, 0.5) 50%,
+    #d4cfc3 100%
+  ) !important;
 }
