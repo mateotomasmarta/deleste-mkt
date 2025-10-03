@@ -3178,3 +3178,13 @@ html, body {
     #d4cfc3 100%
   ) !important;
 }
+
+.contact__info a {
+  color: var(--color-accent);      /* mismo color que el resto del texto */
+  text-decoration: none;           /* sin subrayado */
+  font-weight: normal;             /* por si se ve más grueso */
+}
+
+.contact__info a:hover {
+  color: var(--color-dark);        /* opcional: color al pasar el mouse */
+}
